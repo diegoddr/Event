@@ -1,0 +1,80 @@
+﻿@model Event.ViewModels.DadosModulo
+@{
+    ViewBag.Title = "Alterar Modulo";
+}
+<div class="col-md-3"></div>
+<div class="container col-md-5">
+    <form class="form-horizontal" method="post">
+        <fieldset>
+            <legend>Alterar Modulo</legend>
+
+            <div>
+                <label class="control-label">* Nome</label>
+                <div>
+                    <input class="textos" value="@Model.Modulo.Nome" id="tnome" name="Nome" type="text" placeholder="Nome">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">Descrição</label>
+                <div>
+                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição">@Model.Modulo.Descricao</textarea>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Vagas</label>
+                <div>
+                    <input value="@Model.Modulo.Vagas" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Data</label>
+                <div>
+                    <input value="@Model.Modulo.Data.ToShortDateString()" id="tdata" name="Data" type="text" placeholder="00/00/0000">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Inicio</label>
+                <div>
+                    <input value="@Model.Modulo.Inicio" id="tinicio" name="Inicio" type="time" placeholder="00:00:00">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Fim</label>
+                <div>
+                    <input value="@Model.Modulo.Fim" id="tfim" name="Fim" type="time" placeholder="00:00:00">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Observação</label>
+                <div>
+                    <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existe Observações">@Model.Modulo.Observacao</textarea>
+                </div>
+            </div>
+            @*<div>
+                <label class="control-label">* Evento</label>
+                <div>
+                    <select class="textos" name="Evento">
+                        @foreach (var i in Model.Eventos)
+                        {
+                            if (Model.Modulo.Evento == i)
+                            {
+                                <option selected value="@i.Id">@i.Nome</option>
+                            }
+                            else
+                            {
+                                <option value="@i.Id">@i.Nome</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>*@
+            <br />
+            <div>
+                <div class="btn-group">
+                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

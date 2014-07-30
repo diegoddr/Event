@@ -1,0 +1,26 @@
+﻿@model Dominio.Entidades.Usuario
+@{
+    ViewBag.Title = "Home/Acesso";
+}
+
+<div class="col-md-9">
+    <h2>Bem vindo @Model.Nome!</h2>
+</div>
+<div class="col-md-3">
+    <h4>Convites</h4>
+    <table class="table">
+        <tr>
+            <th>Modulo</th>
+            <th>Aceitar</th>
+            <th>Recusar</th>
+        </tr>
+        @foreach (var i in Model.Modulos)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td><button onclick="aceitarConvite(@i.Id)">Aceitar</button></td>
+                <td><button onclick="recusarConvite(@i.Id)">Recusar</button></td>
+            </tr>
+        }
+    </table>
+</div>

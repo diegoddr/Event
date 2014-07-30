@@ -1,0 +1,10 @@
+C:\Projetos\Event\Dominio\bin\Debug\Dominio.dll
+C:\Projetos\Event\Dominio\bin\Debug\Dominio.pdb
+C:\Projetos\Event\Dominio\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
+C:\Projetos\Event\Dominio\obj\Debug\Dominio.dll
+C:\Projetos\Event\Dominio\obj\Debug\Dominio.pdb
+E:\VisualStudio\Event\Dominio\bin\Debug\Dominio.dll
+E:\VisualStudio\Event\Dominio\bin\Debug\Dominio.pdb
+E:\VisualStudio\Event\Dominio\obj\Debug\Dominio.dll
+E:\VisualStudio\Event\Dominio\obj\Debug\Dominio.pdb
+E:\VisualStudio\Event\Dominio\obj\Debug\Dominio.csprojResolveAssemblyReference.cache

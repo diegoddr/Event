@@ -1,0 +1,16 @@
+C:\Projetos\Event\Persistencia\bin\Debug\Persistencia.dll
+C:\Projetos\Event\Persistencia\bin\Debug\Persistencia.pdb
+C:\Projetos\Event\Persistencia\bin\Debug\Dominio.dll
+C:\Projetos\Event\Persistencia\bin\Debug\Dominio.pdb
+C:\Projetos\Event\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+C:\Projetos\Event\Persistencia\obj\Debug\Persistencia.dll
+C:\Projetos\Event\Persistencia\obj\Debug\Persistencia.pdb
+E:\VisualStudio\Event\Persistencia\bin\Debug\Persistencia.dll
+E:\VisualStudio\Event\Persistencia\bin\Debug\Persistencia.pdb
+E:\VisualStudio\Event\Persistencia\bin\Debug\Dominio.dll
+E:\VisualStudio\Event\Persistencia\bin\Debug\NHibernate.dll
+E:\VisualStudio\Event\Persistencia\bin\Debug\Dominio.pdb
+E:\VisualStudio\Event\Persistencia\bin\Debug\NHibernate.xml
+E:\VisualStudio\Event\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+E:\VisualStudio\Event\Persistencia\obj\Debug\Persistencia.dll
+E:\VisualStudio\Event\Persistencia\obj\Debug\Persistencia.pdb

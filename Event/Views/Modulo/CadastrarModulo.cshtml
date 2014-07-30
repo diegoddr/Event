@@ -1,0 +1,122 @@
+﻿@model Event.ViewModels.DadosModulo
+@{
+    ViewBag.Title = "CadastrarModulo";
+    <!--Isso aqui valida a lista de qm pode mexer-->
+    var usuario = Model.Usuario;
+}
+
+<div class="container col-md-5">
+    <form class="form-horizontal" method="post">
+        <fieldset>
+            <legend>Cadastrar Modulo</legend>
+            <div>
+                <label class="control-label">* Nome</label>
+                <div>
+                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome">
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label">Descrição</label>
+                <div>
+                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição"></textarea>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Vagas</label>
+                <div>
+                    <input id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Data</label>
+                <div>
+                    <input id="tdata" name="Data" type="text" placeholder="00/00/0000" class="data">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Inicio</label>
+                <div>
+                    <input id="tinicio" name="Inicio" type="text" placeholder="00:00" class="time">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Fim</label>
+                <div>
+                    <input id="tfim" name="Fim" type="text" placeholder="00:00" class="time">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Observação</label>
+                <div>
+                    <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existem Observações?"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label">* Evento</label>
+                <div>
+                    <select name="Evento">
+                        @foreach (var i in Model.Eventos)
+                        {
+                            <option value="@i.Id">@i.Nome</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="btn-group">
+                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="container col-md-7">
+    <legend>Lista dos Meus Modulos</legend>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+            <th>Vagas</th>
+            <th>Evento</th>
+            <th>Convidar Usuario</th>
+            <th>Modificar Modulo</th>
+            <th>Inativar Modulo</th>
+        </tr>
+        @foreach (var i in Model.Modulos)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Data.ToShortDateString()</td>
+                <td>@i.Inicio</td>
+                <td>@i.Fim</td>
+                <td>@i.Vagas</td>
+                <td>@i.Evento.Nome</td>
+                @if (i.Evento.Organizador == usuario)
+                {
+                    <td><button onclick=" location.href='/Modulo/ConvidarUsuario/@i.Id' ">Convidar</button></td>
+                    <td><button onclick=" location.href='/Modulo/AlterarModulo/@i.Id' ">Alterar</button></td>
+                }
+                else
+                {
+                    <td></td>
+                    <td></td>
+                }
+                <td><button onclick="location.href='/Modulo/CadastrarModulo/@i.Id">Inativar</button></td>
+            </tr>
+        }
+    </table>
+</div>
+
+@section scripts{
+    <script>
+        $('.data').mask('00/00/0000');
+        $('.time').mask('00:00');
+    </script>
+}

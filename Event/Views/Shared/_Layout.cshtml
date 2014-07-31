@@ -1,4 +1,6 @@
-﻿@{ var user = HttpContext.Current.User.Identity.IsAuthenticated;}
+﻿@{
+    var user = HttpContext.Current.Session["Usuario"] != null;
+}
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -8,6 +10,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <link href="~/Resourses/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Resourses/css/jQuery-ui.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -40,12 +43,48 @@
                 </div>
             </div>
         </footer>
-
-        @Scripts.Render("~/bundles/jquery")
-        <script src="~/Resourses/js/jquery.mask.js"></script>
-        <script src="~/Resourses/js/bootstrap.js"></script>
-        <script src="~/Resourses/js/funcoes.js"></script>
-        @RenderSection("scripts", required: false)
     </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script src="~/Resourses/js/jquery.mask.js"></script>
+    <script src="~/Resourses/js/bootstrap.js"></script>
+    <script src="~/Resourses/js/funcoes.js"></script>
+    <script src="~/Resourses/js/jQuery-1.10.2.js"></script>
+    <script src="~/Resourses/js/jQuery-ui.js"></script>
+
+    @section scripts{
+    <script>
+        var masks = ['(00) 00000-0000', '(00) 0000-00009'],
+            maskBehavior = function (val, e, field, options) {
+                return val.length > 14 ? masks[0] : masks[1];
+            };
+
+        $('.telefone').mask(maskBehavior, {
+            onKeyPress:
+                function (val, e, field, options) {
+                    field.mask(maskBehavior(val, e, field, options), options);
+                }
+        });
+        $('.data').mask('00/00/0000');
+
+        $(".calendario").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            dateFormat: 'dd/mm/yy',
+            showOn: "button",
+            buttonImage: "datePicker16.gif",
+            buttonImageOnly: true,
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+        });
+    </script>
+    }
+    }
+    
+
 </body>
 </html>

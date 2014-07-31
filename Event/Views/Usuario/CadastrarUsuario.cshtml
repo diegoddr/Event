@@ -72,30 +72,7 @@
     </form>
 </div>
 
-@section scripts{
-    <script>
-        var masks = ['(00) 00000-0000', '(00) 0000-00009'],
-        maskBehavior = function (val, e, field, options) {
-            return val.length > 14 ? masks[0] : masks[1];
-        };
 
-        $('.telefone').mask(maskBehavior, {
-            onKeyPress:
-               function (val, e, field, options) {
-                   field.mask(maskBehavior(val, e, field, options), options);
-               }
-        });
-        $('.data').mask('00/00/0000');
-
-        function validarSenha() {
-            senha1 = document.f1.tsenha.value
-            senha2 = document.f1.tsenha2.value
-            if (senha1 != senha2)
-                alert("As senhas não conferem")
-            else{}
-        }
-    </script>
-}
 
 
 

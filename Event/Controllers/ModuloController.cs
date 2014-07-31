@@ -48,6 +48,7 @@ namespace Event.Controllers
             dados.Modulos =
                 _moduloServicos.Listar(
                     e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data >= DateTime.Now);
+            dados.Usuario = _usuario;
             return View(dados);
         }
         public ActionResult ListarMeusModulos()

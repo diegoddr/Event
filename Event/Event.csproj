@@ -248,6 +248,7 @@
     <Content Include="Global.asax" />
     <Content Include="Resourses\css\bootstrap-theme.css.map" />
     <Content Include="Resourses\css\bootstrap.css.map" />
+    <Content Include="Resourses\css\jQuery-ui.css" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.woff" />
@@ -261,6 +262,8 @@
     <Content Include="Resourses\js\bootstrap.js" />
     <Content Include="Resourses\js\bootstrap.min.js" />
     <Content Include="Resourses\js\funcoes.js" />
+    <Content Include="Resourses\js\jQuery-1.10.2.js" />
+    <Content Include="Resourses\js\jQuery-ui.js" />
     <Content Include="Resourses\js\jquery.mask.js" />
     <Content Include="Resourses\js\validacoes.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "CadastrarUsuario";
+    var dataAtual = DateTime.Now.ToShortDateString();
 }
 
 <div class="col-md-3"></div>
@@ -10,31 +11,32 @@
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome">
+                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Login</label>
                 <div>
-                    <input class="textos" id="tlogin" name="Login" type="text" placeholder="Usuario">
+                    <input class="textos" id="tlogin" name="Login" type="text" placeholder="Usuario" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Senha</label>
                 <div>
-                    <input class="textos" id="tsenha" name="Senha" type="password" placeholder="Letras e numeros">
+                    <input class="textos" id="tsenha1" name="Senha1" type="password" placeholder="Letras e numeros" required="required">
                 </div>
             </div>
             <div>
-                <label class="control-label">* Repita a Senha</label>
+                <label class="control-label">* Confirmar Senha</label>
                 <div>
-                    <input class="textos" id="tsenha2" name="Senha" type="password" placeholder="Letras e numeros">
+                    <input onchange="validarSenha()" class="textos" id="tsenha2" name="Senha2" type="password" placeholder="Letras e numeros">
+                    <span style="color:red;" id="erroSenha"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Email</label>
                 <div>
-                    <input class="textos" id="temail" name="Email" type="email" placeholder="exemplo@exemplo.com">
+                    <input class="textos" id="temail" name="Email" type="email" placeholder="exemplo@exemplo.com" required="required">
                 </div>
             </div>
             <br />
@@ -52,25 +54,33 @@
             <div>
                 <label class="control-label">* Telefone</label>
                 <div>
-                    <input id="ttelefone" name="Telefone" type="text" class="telefone" placeholder="(99)9 9999-9999">
+                    <input id="ttelefone" name="Telefone" type="text" class="telefone" placeholder="(99)9 9999-9999" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Nascimento</label>
                 <div>
-                    <input id="tnascimento" name="Nascimento" type="text" class="data" placeholder="01/01/2014">
+                    <input onchange="validarDataMaior()" id="tnascimento" name="Nascimento" type="text" class="calendario data" placeholder="01/01/2014" required="required">
+                    <span style="color:red;" id="erroData"></span>
                 </div>
             </div>
             <br />
             <div>
                 <div class="btn-group">
-                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button class="btn btn-success" type="submit" id="enviar" onclick="validarCampos()">Enviar</button>
                     <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
                 </div>
             </div>
         </fieldset>
     </form>
 </div>
+
+@section scripts{
+    <script>
+        
+    </script>
+}
+
 
 
 

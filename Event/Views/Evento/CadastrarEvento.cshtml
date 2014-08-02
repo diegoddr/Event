@@ -11,7 +11,7 @@
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome">
+                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
 
@@ -25,20 +25,22 @@
             <div>
                 <label class="control-label">* Inicio</label>
                 <div>
-                    <input id="tinicio" name="Inicio" type="text" placeholder="00/00/0000" class="data">
+                    <input onchange="validarDataMenor()" id="tinicio" name="Inicio" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
 
             <div>
                 <label class="control-label">* Fim</label>
                 <div>
-                    <input id="tfim" name="Fim" type="text" placeholder="00/00/0000" class="data">
+                    <input onchange="validarDiferencaData()" id="tfim" name="Fim" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataFim"></span>
                 </div>
             </div>
             <br />
             <div>
                 <div class="btn-group">
-                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button onclick="validarCampos()" class="btn btn-success" type="submit" id="enviar">Enviar</button>
                     <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
                 </div>
             </div>

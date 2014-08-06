@@ -12,10 +12,9 @@
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome">
+                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
-
             <div>
                 <label class="control-label">Descrição</label>
                 <div>
@@ -25,29 +24,33 @@
             <div>
                 <label class="control-label">* Vagas</label>
                 <div>
-                    <input id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas">
+                    <input onkeypress="return validarNumero()" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Data</label>
                 <div>
-                    <input id="tdata" name="Data" type="text" placeholder="00/00/0000" class="data">
+                    <input id="tDataInicio" name="Data" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Inicio</label>
                 <div>
-                    <input id="tinicio" name="Inicio" type="text" placeholder="00:00" class="time">
+                    <input onchange="validarHoraInicio();" id="tinicio" name="Inicio" type="text" placeholder="00:00" class="time" required="required">
+                    <span style="color:red;" id="erroHoraInicio"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Fim</label>
                 <div>
-                    <input id="tfim" name="Fim" type="text" placeholder="00:00" class="time">
+                    <input onchange="validarDiferencaHora(); validarHoraFim();" id="tfim" name="Fim" type="text" placeholder="00:00" class="time" required="required">
+                    <span style="color:red;" id="erroHoraFim"></span>
+                    <span style="color:red;" id="erroDiferencaHora"></span>
                 </div>
             </div>
             <div>
-                <label class="control-label">* Observação</label>
+                <label class="control-label">Observação</label>
                 <div>
                     <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existem Observações?"></textarea>
                 </div>
@@ -56,7 +59,7 @@
             <div>
                 <label class="control-label">* Evento</label>
                 <div>
-                    <select name="Evento">
+                    <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
                         @foreach (var i in Model.Eventos)
                         {
                             <option value="@i.Id">@i.Nome</option>
@@ -116,7 +119,15 @@
 
 @section scripts{
     <script>
-        $('.data').mask('00/00/0000');
-        $('.time').mask('00:00');
+        $("button[type=submit]").click(function (e) {
+            var erroDataInicio = document.getElementById("erroDataInicio").innerHTML;
+            var erroHoraInicio = document.getElementById("erroHoraInicio").innerHTML;
+            var erroDiferencaHora = document.getElementById("erroDiferencaHora").innerHTML;
+            var erroHoraFim = document.getElementById("erroHoraFim").innerHTML;
+            if (erroDataInicio != "" || erroHoraInicio != "" || erroDiferencaHora != "" || erroHoraFim != "") {
+                alert("Preencha os champos em vermelhor");
+                e.preventDefault();
+            }
+        });
     </script>
 }

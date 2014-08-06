@@ -135,6 +135,16 @@ namespace Event.Controllers
             _moduloServicos.Cadastrar(modulo);
             Response.Redirect("/Modulo/CadastrarModulo");
         }
+
+        public JsonResult validarDataModulo(int id)
+        {
+            var evento = _eventoServicos.ObterPorId(id);
+            var dataInicioEvento = evento.Inicio;
+            var dataFimEvento = evento.Fim;
+            var result = new {dataInicio = dataInicioEvento.ToShortDateString(), dataFim = dataFimEvento.ToShortDateString()};
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
 

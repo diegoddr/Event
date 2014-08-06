@@ -77,7 +77,14 @@
 
 @section scripts{
     <script>
-        
+        $("button[type=submit]").click(function(e) {
+            var erroSenha = document.getElementById("erroSenha").innerHTML;
+            var erroData = document.getElementById("erroData").innerHTML;
+            if (erroSenha != "" || erroData != "") {
+                alert("Preencha corretamente os champos em vermelho");
+                e.preventDefault();
+            }
+        });
     </script>
 }
 

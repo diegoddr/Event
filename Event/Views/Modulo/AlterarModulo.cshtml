@@ -11,7 +11,7 @@
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input class="textos" value="@Model.Modulo.Nome" id="tnome" name="Nome" type="text" placeholder="Nome">
+                    <input class="textos" value="@Model.Modulo.Nome" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
             <div>
@@ -23,37 +23,40 @@
             <div>
                 <label class="control-label">* Vagas</label>
                 <div>
-                    <input value="@Model.Modulo.Vagas" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas">
+                    <input onkeypress="return validarNumero()" value="@Model.Modulo.Vagas" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Data</label>
                 <div>
-                    <input value="@Model.Modulo.Data.ToShortDateString()" id="tdata" name="Data" type="text" placeholder="00/00/0000">
+                    <input onchange="validarDataMenor()" value="@Model.Modulo.Data.ToShortDateString()" id="tDataInicio" name="Data" type="text" class="data calendario" placeholder="00/00/0000" required="required"> 
+                    <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Inicio</label>
                 <div>
-                    <input value="@Model.Modulo.Inicio" id="tinicio" name="Inicio" type="time" placeholder="00:00:00">
+                    <input value="@Model.Modulo.Inicio" id="tDataInicio" name="Inicio" type="text" class="time" placeholder="00:00" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Fim</label>
                 <div>
-                    <input value="@Model.Modulo.Fim" id="tfim" name="Fim" type="time" placeholder="00:00:00">
+                    <input onchange=" validarHoraFim(); validarDiferencaHora();" value="@Model.Modulo.Fim" id="tfim" name="Fim" type="text" class="time" placeholder="00:00" required="required">
+                    <span style="color:red;" id="erroHoraFim"></span>
+                    <span style="color:red;" id="erroDiferencaHora"></span>
                 </div>
             </div>
             <div>
-                <label class="control-label">* Observação</label>
+                <label class="control-label">Observação</label>
                 <div>
                     <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existe Observações">@Model.Modulo.Observacao</textarea>
                 </div>
             </div>
-            @*<div>
+            <div>
                 <label class="control-label">* Evento</label>
                 <div>
-                    <select class="textos" name="Evento">
+                    <select onchange="validarDataModulo($(this).val())" class="textos" name="Evento">
                         @foreach (var i in Model.Eventos)
                         {
                             if (Model.Modulo.Evento == i)
@@ -67,7 +70,7 @@
                         }
                     </select>
                 </div>
-            </div>*@
+            </div>
             <br />
             <div>
                 <div class="btn-group">
@@ -78,3 +81,18 @@
         </fieldset>
     </form>
 </div>
+
+@section scripts{
+    <script>
+        $("button[type=submit]").click(function (e) {
+            var erroDataInicio = document.getElementById("erroDataInicio").innerHTML;
+            var erroHoraInicio = document.getElementById("erroHoraInicio").innerHTML;
+            var erroDiferencaHora = document.getElementById("erroDiferencaHora").innerHTML;
+            var erroHoraFim = document.getElementById("erroHoraFim").innerHTML;
+            if (erroDataInicio != "" || erroHoraInicio != "" || erroDiferencaHora != "" || erroHoraFim != "") {
+                alert("Preencha os champos em vermelhor");
+                e.preventDefault();
+            }
+        });
+    </script>
+}

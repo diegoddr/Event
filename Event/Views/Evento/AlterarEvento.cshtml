@@ -23,7 +23,7 @@
             <div>
                 <label class="control-label">* Inicio</label>
                 <div>
-                    <input onchange="validarDataMenor()" value="@Model.Inicio.ToShortDateString()" id="tinicio" name="Inicio" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <input onchange="validarDataMenor()" value="@Model.Inicio.ToShortDateString()" id="tDataInicio" name="Inicio" type="text" placeholder="00/00/0000" class="data calendario" required="required">
                     <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
@@ -48,7 +48,14 @@
 
 @section scripts{
     <script>
-        $('.data').mask('00/00/0000');
+        $("button[type=submit]").click(function (e) {
+            var eDataInicio = document.getElementById("erroDataInicio").innerHTML;
+            var eDataFim = document.getElementById("erroDataFim").innerHTML;
+            if (eDataFim != "" || eDataInicio != "") {
+                alert("Preencha corretamente os champos em vermelho");
+                e.preventDefault();
+            }
+        });
     </script>
 }
 

@@ -26,7 +26,7 @@ namespace Event.Controllers
         {
             var dados = new DadosModulo();
             dados.Eventos = _eventoServicos.Listar(e => e.Organizador == _usuario && e.Fim >= DateTime.Now);
-            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data >= DateTime.Now);
+            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
             dados.Usuario = _usuario;
             return View(dados);
         }
@@ -41,20 +41,19 @@ namespace Event.Controllers
             _moduloServicos.Cadastrar(modulo);
             return RedirectToAction("CadastrarModulo");
         }
-
         public ActionResult ListarTodosModulos()
         {
             var dados = new DadosModulo();
             dados.Modulos =
                 _moduloServicos.Listar(
-                    e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data >= DateTime.Now);
+                    e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
             dados.Usuario = _usuario;
             return View(dados);
         }
         public ActionResult ListarMeusModulos()
         {
             var dados = new DadosModulo();
-            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data >= DateTime.Now);
+            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
             return View(dados);
         }
         public ActionResult ListarModulosAntigos()

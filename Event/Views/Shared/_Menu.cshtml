@@ -12,15 +12,15 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Página Inicial", "IndexCracha", "Home")</li>
-                <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
+                @*<li>@Html.ActionLink("Sobre", "About", "Home")</li>
+                <li>@Html.ActionLink("Contato", "Contact", "Home")</li>*@
                 <li>@Html.ActionLink("Usuario", "CadastrarUsuario", "Usuario")</li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evento<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("Cadastrar Evento", "CadastrarEvento", "Evento")</li>
                         <li>@Html.ActionLink("Listar Meus Evento", "ListarMeusEventos", "Evento")</li>
-                        <li>@Html.ActionLink("Listar Eventos Comigo", "ListarTodosEventos", "Evento")</li>
+                        @*<li>@Html.ActionLink("Listar Eventos Comigo", "ListarTodosEventos", "Evento")</li>*@
                         <li>@Html.ActionLink("Listar Eventos Antigos", "ListarEventosAntigos", "Evento")</li>
                     </ul>
                 </li>
@@ -36,7 +36,7 @@
 
             </ul>
             <div class="pull-right">
-                <button class="btn btn-xs" title="Logout" onclick="javascript: location.href = '/Login/Logout';">Logout</button>
+                <button class="btn btn" title="Logout" onclick="javascript: location.href = '/Login/Logout';">Logout</button>
             </div>
         </div>
     </div>

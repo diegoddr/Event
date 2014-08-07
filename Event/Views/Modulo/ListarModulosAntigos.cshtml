@@ -16,8 +16,8 @@
             <th>Vagas</th>
             <th>Evento</th>
             @*<th>Convidar Usuario</th>
-            <th>Modificar Modulo</th>*@
-            <th>Inativar Modulo</th>
+            <th>Modificar Modulo</th>
+            <th>Inativar Modulo</th>*@
         </tr>
         @foreach (var i in Model.Modulos)
         {
@@ -28,7 +28,7 @@
                 <td>@i.Fim</td>
                 <td>@i.Vagas</td>
                 <td>@i.Evento.Nome</td>
-                @*@if (i.Evento.Organizador == usuario)
+                @*if (i.Evento.Organizador == usuario)
                 {
                     <td><button onclick=" location.href='/Modulo/ConvidarUsuario/@i.Id' ">Convidar</button></td>
                     <td><button onclick=" location.href='/Modulo/AlterarModulo/@i.Id' ">Alterar</button></td>
@@ -37,8 +37,8 @@
                 {
                     <td></td>
                     <td></td>
-                }*@
-                <td>X</td>
+                }
+                <td>X</td>*@
             </tr>
         }
     </table>

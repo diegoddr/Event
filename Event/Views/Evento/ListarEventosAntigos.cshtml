@@ -22,9 +22,9 @@
                 <td>@i.Inicio.ToShortDateString()</td>
                 <td>@i.Fim.ToShortDateString()</td>
                 <td>@i.Organizador.Nome</td>
-                @*<td><button onclick="location.href='/Modulo/CadastrarModulo/'">Novo</button></td>*@
-                @*<td><button onclick="location.href='/Evento/AlterarEvento/@i.Id'">Alterar</button></td>*@
-                <td>X</td>
+                @*<td><button onclick="location.href='/Modulo/CadastrarModulo/@i.Id'">Novo</button></td>
+                <td><button onclick="location.href='/Evento/AlterarEvento/@i.Id'">Alterar</button></td>
+                <td><button onclick="location.href='/Evento/InativarEvento/@i.Id'">Inativar</button></td>*@
             </tr>
         }
     </table>

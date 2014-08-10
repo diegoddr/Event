@@ -30,7 +30,6 @@ namespace Event.Controllers
             dados.Usuario = _usuario;
             return View(dados);
         }
-
         [HttpPost]
         public ActionResult CadastrarModulo(FormCollection f)
         {
@@ -68,7 +67,7 @@ namespace Event.Controllers
         {
             var dadosModulo = new DadosModulo();
             dadosModulo.Modulo = _moduloServicos.ObterPorId(id);
-            dadosModulo.Eventos = _eventoServicos.Listar(e => true);
+            dadosModulo.Eventos = _eventoServicos.Listar(e => e.Organizador == _usuario && e.Fim >= DateTime.Now);
             return View(dadosModulo);
         }
         [HttpPost]
@@ -82,7 +81,8 @@ namespace Event.Controllers
             modulo.Inicio = f["Inicio"];
             modulo.Fim = f["Fim"];
             modulo.Observacao = f["Observacao"];
-            //modulo.Evento = _eventoServicos.ObterPorId(Convert.ToInt16(f["Evento"]));
+            modulo.Evento = _eventoServicos.ObterPorId(Convert.ToInt16(f["Evento"]));
+
             _moduloServicos.Cadastrar(modulo);
             return RedirectToAction("AlterarModulo");
         }

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Dependencia;
 using Dominio.Entidades;
 using Dominio.Servicos;
-
+using NHibernate.Criterion;
+using NHibernate.Linq;
 
 
 namespace Event.Controllers
@@ -44,11 +46,24 @@ namespace Event.Controllers
             {
                 usuario.Sexo = "F";
             }
-            Random rdn = new Random();
-            usuario.Cracha = (rdn.Next(1000000000));
 
+            Random rdn = new Random();
+            bool existe = true;
+            while (existe)
+            {
+                usuario.Cracha = (rdn.Next(1000000000));
+                var existeCracha = _usuarioServicos.Listar(e => e.Cracha == usuario.Cracha);
+                if (!existeCracha.Any()) existe = false;
+            }
             _usuarioServicos.Cadastrar(usuario);
-            return RedirectToAction("CadastrarUsuario");
+            return RedirectToAction("Login","Login");
+        }
+
+        public JsonResult validarLogin(string id)
+        {
+            var usuario = _usuarioServicos.Listar(e => e.Login.ToLower() == id.ToLower());
+            if (usuario.Any()) return Json("Existe", JsonRequestBehavior.AllowGet);
+            return Json("Disponivel", JsonRequestBehavior.AllowGet);
         }
     }
 }

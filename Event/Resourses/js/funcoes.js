@@ -51,7 +51,7 @@ function aceitarConvite(id) {
         }
     });
 }
-
+//Valida data de nacimento!! \o/
 function validarDataMaior() {
     var dataForm = (document.forms[0]["tnascimento"].value).split("/");
     var hoje = new Date();
@@ -65,7 +65,7 @@ function validarDataMaior() {
         document.getElementById("erroData").innerHTML = "";
     }
 }
-
+//Valida data inicial do evento
 function validarDataMenor() {
     var dataForm = (document.forms[0]["tDataInicio"].value).split("/");
     var hoje = new Date();
@@ -79,6 +79,7 @@ function validarDataMenor() {
         document.getElementById("erroDataInicio").innerHTML = "";
     }
 }
+//Valida intervalo entre datas do evento
 function validarDiferencaData() {
     var dataInicio = (document.forms[0]["tDataInicio"].value).split("/");
     var dataFim = (document.forms[0]["tfim"].value).split("/");
@@ -93,6 +94,7 @@ function validarDiferencaData() {
         document.getElementById("erroDataFim").innerHTML = "";
     }
 }
+//Validar senha form usuario
 function validarSenha(e) {
     var senha1 = $('#tsenha1').val();
     var senha2 = $('#tsenha2').val();

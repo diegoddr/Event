@@ -22,6 +22,17 @@
                 </div>
             </div>
             <div>
+                <label class="control-label">* Evento</label>
+                <div>
+                    <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
+                        @foreach (var i in Model.Eventos)
+                        {
+                            <option value="@i.Id">@i.Nome</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div>
                 <label class="control-label">* Vagas</label>
                 <div>
                     <input onkeypress="return validarNumero()" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
@@ -30,7 +41,7 @@
             <div>
                 <label class="control-label">* Data</label>
                 <div>
-                    <input id="tDataInicio" name="Data" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <input onchange="validarDataModulo($('#evento').val())" id="tDataInicio" name="Data" type="text" placeholder="00/00/0000" class="data calendario" required="required">
                     <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
@@ -56,17 +67,6 @@
                 </div>
             </div>
 
-            <div>
-                <label class="control-label">* Evento</label>
-                <div>
-                    <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
-                        @foreach (var i in Model.Eventos)
-                        {
-                            <option value="@i.Id">@i.Nome</option>
-                        }
-                    </select>
-                </div>
-            </div>
             <br />
             <div>
                 <div class="btn-group">

@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Alterar Modulo";
 }
+
 <div class="col-md-3"></div>
 <div class="container col-md-5">
     <form class="form-horizontal" method="post">
@@ -21,6 +22,17 @@
                 </div>
             </div>
             <div>
+                <label class="control-label">* Evento</label>
+                <div>
+                    <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
+                        @foreach (var i in Model.Eventos)
+                        {
+                            <option value="@i.Id">@i.Nome</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div>
                 <label class="control-label">* Vagas</label>
                 <div>
                     <input onkeypress="return validarNumero()" value="@Model.Modulo.Vagas" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
@@ -29,20 +41,21 @@
             <div>
                 <label class="control-label">* Data</label>
                 <div>
-                    <input onchange="validarDataMenor()" value="@Model.Modulo.Data.ToShortDateString()" id="tDataInicio" name="Data" type="text" class="data calendario" placeholder="00/00/0000" required="required"> 
+                    <input onchange="validarDataModulo($('#evento').val())" value="@Model.Modulo.Data.ToShortDateString()" id="tDataInicio" name="Data" type="text" class="data calendario" placeholder="00/00/0000" required="required">
                     <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Inicio</label>
                 <div>
-                    <input value="@Model.Modulo.Inicio" id="tDataInicio" name="Inicio" type="text" class="time" placeholder="00:00" required="required">
+                    <input onchange="validarHoraInicio()" value="@Model.Modulo.Inicio" id="tinicio" name="Inicio" type="text" class="time" placeholder="00:00" required="required">
+                    <span style="color:red;" id="erroHoraInicio"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Fim</label>
                 <div>
-                    <input onchange=" validarHoraFim(); validarDiferencaHora();" value="@Model.Modulo.Fim" id="tfim" name="Fim" type="text" class="time" placeholder="00:00" required="required">
+                    <input onchange="validarDiferencaHora(); validarHoraFim();" id="tfim" name="Fim" type="text" placeholder="00:00" class="time" required="required">
                     <span style="color:red;" id="erroHoraFim"></span>
                     <span style="color:red;" id="erroDiferencaHora"></span>
                 </div>
@@ -51,24 +64,6 @@
                 <label class="control-label">Observação</label>
                 <div>
                     <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existe Observações">@Model.Modulo.Observacao</textarea>
-                </div>
-            </div>
-            <div>
-                <label class="control-label">* Evento</label>
-                <div>
-                    <select onchange="validarDataModulo($(this).val())" class="textos" name="Evento">
-                        @foreach (var i in Model.Eventos)
-                        {
-                            if (Model.Modulo.Evento == i)
-                            {
-                                <option selected value="@i.Id">@i.Nome</option>
-                            }
-                            else
-                            {
-                                <option value="@i.Id">@i.Nome</option>
-                            }
-                        }
-                    </select>
                 </div>
             </div>
             <br />

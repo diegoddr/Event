@@ -23,7 +23,7 @@
             <div>
                 <label class="control-label">* Senha</label>
                 <div>
-                    <input class="textos" id="tsenha1" name="Senha1" type="password" placeholder="Letras e numeros" required="required">
+                    <input class="textos" id="tsenha1" name="Senha" type="password" placeholder="Letras e numeros" required="required">
                 </div>
             </div>
             <div>
@@ -78,11 +78,28 @@
 @section scripts{
     <script>
         $("button[type=submit]").click(function(e) {
-            var erroSenha = document.getElementById("erroSenha").innerHTML;
-            var erroData = document.getElementById("erroData").innerHTML;
-            if (erroSenha != "" || erroData != "") {
-                alert("Preencha corretamente os champos em vermelho");
+            var dataForm = (document.forms[0]["tnascimento"].value).split("/");
+            var hoje = new Date();
+            var dataInformada = new Date(dataForm[2], dataForm[1] - 1, dataForm[0]);
+            var senha1 = $('#tsenha1').val();
+            var senha2 = $('#tsenha2').val();
+            if (senha1 != senha2 || dataInformada > hoje) {
+                alert("Corrigir os campos em vermelho");
                 e.preventDefault();
+            }
+        });
+
+
+        $("#tlogin").focusout(function () {
+            var id = $(this).val();
+            if($(this).val()!="")
+            {
+                $.getJSON('@Url.Action("validarLogin")/' + id, function (e) {
+                    if (e == "Existe") {
+                        alert("Login já existente!");
+                        $("#tlogin").val("");
+                    }
+                });
             }
         });
     </script>

@@ -32,20 +32,17 @@ namespace Event.Controllers
             _eventoServicos.Cadastrar(evento);
             return RedirectToAction("CadastrarEvento");
         }
-
         public ActionResult ListarTodosEventos()
         {
             var listarTodosEventos =
                 _eventoServicos.Listar(e => (e.Usuarios.Contains(_usuario) || e.Organizador == _usuario) && e.Fim >= DateTime.Now && e.Ativo.Equals("S"));
             return View(listarTodosEventos);
         }
-
         public ActionResult ListarMeusEventos()
         {
             var listarMeusEventos = _eventoServicos.Listar(e => e.Organizador == _usuario && e.Fim >= DateTime.Now && e.Ativo.Equals("S"));
             return View(listarMeusEventos);
         }
-
         public ActionResult ListarEventosAntigos()
         {
             var listarEventosAntigos =
@@ -53,14 +50,11 @@ namespace Event.Controllers
                     e => (e.Usuarios.Contains(_usuario) || e.Organizador == _usuario) && (e.Fim < DateTime.Now || e.Ativo.Equals("N")));
             return View(listarEventosAntigos);
         }
-
-
         public ActionResult AlterarEvento(int id)
         {
             var evento = _eventoServicos.ObterPorId(id);
             return View(evento);
         }
-
         [HttpPost]
         public ActionResult AlterarEvento(FormCollection f, int id)
         {
@@ -72,7 +66,6 @@ namespace Event.Controllers
             _eventoServicos.Cadastrar(evento);
             return RedirectToAction("CadastrarEvento");
         }
-
         public void InativarEvento(int id)
         {
             var evento = _eventoServicos.ObterPorId(id);

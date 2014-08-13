@@ -1,0 +1,93 @@
+﻿@model Event.ViewModels.DadosModulo
+@{
+    ViewBag.Title = "Alterar Modulo";
+}
+
+<div class="col-md-3"></div>
+<div class="container col-md-5">
+    <form class="form-horizontal" method="post">
+        <fieldset>
+            <legend>Alterar Modulo</legend>
+
+            <div>
+                <label class="control-label">* Nome</label>
+                <div>
+                    <input class="textos" value="@Model.Modulo.Nome" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">Descrição</label>
+                <div>
+                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição">@Model.Modulo.Descricao</textarea>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Evento</label>
+                <div>
+                    <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
+                        @foreach (var i in Model.Eventos)
+                        {
+                            <option value="@i.Id">@i.Nome</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Vagas</label>
+                <div>
+                    <input onkeypress="return validarNumero()" value="@Model.Modulo.Vagas" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Data</label>
+                <div>
+                    <input onchange="validarDataModulo($('#evento').val())" value="@Model.Modulo.Data.ToShortDateString()" id="tDataInicio" name="Data" type="text" class="data calendario" placeholder="00/00/0000" required="required">
+                    <span style="color:red;" id="erroDataInicio"></span>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Inicio</label>
+                <div>
+                    <input onchange="validarHoraInicio()" value="@Model.Modulo.Inicio" id="tinicio" name="Inicio" type="text" class="time" placeholder="00:00" required="required">
+                    <span style="color:red;" id="erroHoraInicio"></span>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Fim</label>
+                <div>
+                    <input onchange="validarDiferencaHora(); validarHoraFim();" id="tfim" name="Fim" type="text" placeholder="00:00" class="time" required="required">
+                    <span style="color:red;" id="erroHoraFim"></span>
+                    <span style="color:red;" id="erroDiferencaHora"></span>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">Observação</label>
+                <div>
+                    <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existe Observações">@Model.Modulo.Observacao</textarea>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="btn-group">
+                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+@section scripts{
+    <script>
+        $("button[type=submit]").click(function (e) {
+            var erroDataInicio = document.getElementById("erroDataInicio").innerHTML;
+            var erroHoraInicio = document.getElementById("erroHoraInicio").innerHTML;
+            var erroDiferencaHora = document.getElementById("erroDiferencaHora").innerHTML;
+            var erroHoraFim = document.getElementById("erroHoraFim").innerHTML;
+            if (erroDataInicio != "" || erroHoraInicio != "" || erroDiferencaHora != "" || erroHoraFim != "") {
+                alert("Preencha os champos em vermelhor");
+                e.preventDefault();
+            }
+        });
+    </script>
+}

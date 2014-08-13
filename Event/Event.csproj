@@ -253,6 +253,7 @@
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\Event.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Resourses\css\bootstrap-theme.css" />
     <Content Include="Resourses\css\bootstrap-theme.min.css" />
@@ -336,6 +337,7 @@
     <Content Include="Views\Modulo\AlterarModulo.cshtml" />
     <Content Include="Views\Modulo\ConvidarUsuario.cshtml" />
     <Content Include="Views\Home\IndexCracha.cshtml" />
+    <Content Include="Views\Usuario\AlterarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

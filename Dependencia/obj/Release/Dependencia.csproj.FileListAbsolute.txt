@@ -1,0 +1,15 @@
+E:\VisualStudio\Event\Dependencia\bin\Release\Dependencia.dll
+E:\VisualStudio\Event\Dependencia\bin\Release\Dependencia.pdb
+E:\VisualStudio\Event\Dependencia\bin\Release\Castle.Core.dll
+E:\VisualStudio\Event\Dependencia\bin\Release\Castle.Windsor.dll
+E:\VisualStudio\Event\Dependencia\bin\Release\Dominio.dll
+E:\VisualStudio\Event\Dependencia\bin\Release\Persistencia.dll
+E:\VisualStudio\Event\Dependencia\bin\Release\NHibernate.dll
+E:\VisualStudio\Event\Dependencia\bin\Release\Dominio.pdb
+E:\VisualStudio\Event\Dependencia\bin\Release\Persistencia.pdb
+E:\VisualStudio\Event\Dependencia\bin\Release\Castle.Core.xml
+E:\VisualStudio\Event\Dependencia\bin\Release\Castle.Windsor.xml
+E:\VisualStudio\Event\Dependencia\bin\Release\NHibernate.xml
+E:\VisualStudio\Event\Dependencia\obj\Release\Dependencia.csprojResolveAssemblyReference.cache
+E:\VisualStudio\Event\Dependencia\obj\Release\Dependencia.dll
+E:\VisualStudio\Event\Dependencia\obj\Release\Dependencia.pdb

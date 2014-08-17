@@ -119,14 +119,21 @@ namespace Event.Controllers
             _usuarioServicos.Cadastrar(usuario);
         }
 
-        public void AceitarConvite(int id)
+        public JsonResult AceitarConvite(int id)
         {
+            
             var modulo = _moduloServicos.ObterPorId(id);
-            var usuario = _usuario;
-            usuario.Modulos.Remove(modulo);
-            _usuarioServicos.Cadastrar(usuario);
-            modulo.Usuarios.Add(usuario);
-            _moduloServicos.Cadastrar(modulo);
+            if (modulo.Usuarios.Count < modulo.Vagas)
+            {
+                var usuario = _usuario;
+                usuario.Modulos.Remove(modulo);
+                _usuarioServicos.Cadastrar(usuario);
+                modulo.Usuarios.Add(usuario);
+                _moduloServicos.Cadastrar(modulo);
+                return Json("Aceito", JsonRequestBehavior.AllowGet);
+            }
+                return Json("Cheio", JsonRequestBehavior.AllowGet);
+            
         }
         public void InativarModulo(int id)
         {

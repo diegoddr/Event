@@ -24,7 +24,6 @@ namespace Event.Controllers
         {
             return View();
         }
-
         public ActionResult CadastrarUsuario()
         {
             return View();

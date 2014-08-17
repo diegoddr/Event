@@ -45,9 +45,15 @@ function aceitarConvite(id) {
         type: "POST",
         url: '/Modulo/AceitarConvite/',
         data: { id: id },
-        success: function() {
-            alert("Convite Aceito!");
-            location.reload();
+        success: function(e) {
+            if (e == "Aceito") {
+                alert("Convite Aceito!");
+                location.reload();
+            } else {
+                alert("Evento Lotado! Contate o organizador.");
+                location.reload();
+            }
+            
         }
     });
 }

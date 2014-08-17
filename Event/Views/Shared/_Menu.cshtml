@@ -1,4 +1,6 @@
-﻿@model Dominio.Entidades.Usuario
+﻿@{
+    var idUsuario = (int) HttpContext.Current.Session["usuario"];
+}
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -12,7 +14,7 @@
         </div>
         <div class="collapse navbar-collapse" id="menu">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Página Inicial", "IndexCracha", "Home")</li>
+                <li>@Html.ActionLink("Página Inicial", "Redirecionando", "Home")</li>
                 @*<li>@Html.ActionLink("Sobre", "About", "Home")</li>
                 <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
                 <li>@Html.ActionLink("Usuario", "CadastrarUsuario", "Usuario")</li>*@
@@ -37,7 +39,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Usuario/AlterarUsuario/@Model.Id">Alterar Perfil</a></li>
+                        <li><a href="/Usuario/AlterarUsuario/@idUsuario">Alterar Perfil</a></li>
                         <li><a href="/Login/Logout">Sair</a></li>
                     </ul>
                 </li>

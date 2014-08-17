@@ -11,6 +11,7 @@
         <tr>
             <th>Nome</th>
             <th>Data</th>
+            <th>Descricao</th>
             <th>Inicio</th>
             <th>Fim</th>
             <th>Vagas</th>
@@ -23,16 +24,17 @@
         {
             <tr>
                 <td>@i.Nome</td>
-                <td>@i.Data</td>
+                <td>@i.Data.ToShortDateString()</td>
+                <td>@i.Descricao</td>
                 <td>@i.Inicio</td>
                 <td>@i.Fim</td>
                 <td>@i.Vagas</td>
                 <td>@i.Evento.Nome</td>
                 @if (i.Evento.Organizador == usuario)
                 {
-                    <td><button onclick="location.href='/Modulo/ConvidarUsuario/@i.Id';">Convidar</button></td>
-                    <td><button onclick="location.href='/Modulo/AlterarModulo/@i.Id';">Alterar</button></td>
-                    <td><button onclick="location.href='/Modulo/InativarModulo/@i.Id';">Inativar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/ConvidarUsuario/@i.Id';">Convidar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/AlterarModulo/@i.Id';">Alterar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/InativarModulo/@i.Id';">Inativar</button></td>
                 }
                 else
                 {

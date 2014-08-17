@@ -27,7 +27,15 @@
                     <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
                         @foreach (var i in Model.Eventos)
                         {
-                            <option value="@i.Id">@i.Nome</option>
+                            if (Model.IdEvento > 0 && Model.IdEvento == i.Id)
+                            {
+                                <option value="@i.Id" selected>@i.Nome</option>
+                            }
+                            else
+                            {
+                                <option value="@i.Id">@i.Nome</option>
+                            }
+                            
                         }
                     </select>
                 </div>
@@ -48,7 +56,7 @@
             <div>
                 <label class="control-label">* Horário de Inicio</label>
                 <div>
-                    <input onchange="validarHoraInicio();" id="tinicio" name="Inicio" type="text" placeholder="00:00" class="time" required="required">
+                    <input onchange="validarDiferencaHora(); validarHoraInicio();" id="tinicio" name="Inicio" type="text" placeholder="00:00" class="time" required="required">
                     <span style="color:red;" id="erroHoraInicio"></span>
                 </div>
             </div>
@@ -103,9 +111,9 @@
                 <td>@i.Evento.Nome</td>
                 @if (i.Evento.Organizador == usuario)
                 {
-                    <td><button onclick="location.href='/Modulo/ConvidarUsuario/@i.Id';">Convidar</button></td>
-                    <td><button onclick="location.href='/Modulo/AlterarModulo/@i.Id';">Alterar</button></td>
-                    <td><button onclick="location.href='/Modulo/InativarModulo/@i.Id';">Inativar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/ConvidarUsuario/@i.Id';">Convidar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/AlterarModulo/@i.Id';">Alterar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/InativarModulo/@i.Id';">Inativar</button></td>
                 }
                 else
                 {

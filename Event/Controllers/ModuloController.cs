@@ -22,12 +22,13 @@ namespace Event.Controllers
             _usuario = _usuarioServicos.ObterPorId((int)System.Web.HttpContext.Current.Session["Usuario"]);
         }
 
-        public ActionResult CadastrarModulo()
+        public ActionResult CadastrarModulo(int? id)
         {
             var dados = new DadosModulo();
             dados.Eventos = _eventoServicos.Listar(e => e.Organizador == _usuario && e.Fim >= DateTime.Now);
             dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
             dados.Usuario = _usuario;
+            dados.IdEvento = id.HasValue ? id.Value : 0;
             return View(dados);
         }
         [HttpPost]

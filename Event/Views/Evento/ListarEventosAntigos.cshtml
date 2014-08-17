@@ -8,17 +8,19 @@
     <table class="table">
         <tr>
             <th>Nome</th>
+            <th>Descricao</th>
             <th>Inicio</th>
             <th>Fim</th>
             <th>Organizador</th>
             @*<th>Criar Modulo</th>*@
             @*<th>Modificar Evento</th>*@
-            <th>Cancelar Evento</th>
+            @*<th>Cancelar Evento</th>*@
         </tr>
         @foreach (var i in Model)
         {
             <tr>
                 <td>@i.Nome</td>
+                <td>Descricao</td>
                 <td>@i.Inicio.ToShortDateString()</td>
                 <td>@i.Fim.ToShortDateString()</td>
                 <td>@i.Organizador.Nome</td>

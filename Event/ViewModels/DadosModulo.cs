@@ -10,5 +10,6 @@ namespace Event.ViewModels
         public Modulo Modulo { get; set; }
         public IList<Usuario> Usuarios { get; set; }
         public Usuario Usuario { get; set; }
+        public int IdEvento { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace Event.Controllers
         {
             _usuarioServicos = Dependencias.Resolver<UsuarioServicos>();
         }
-        //public ActionResult Redirecionando()
-        //{
-        //    var usuario = (Usuario)System.Web.HttpContext.Current.Session["Usuario"];
+        public ActionResult Redirecionando()
+        {
+            var usuario = _usuarioServicos.ObterPorId((int)System.Web.HttpContext.Current.Session["Usuario"]);
 
-        //    return RedirectToAction("IndexCracha", "Home", new { id = usuario.Cracha });
-        //}
+            return RedirectToAction("IndexCracha", "Home", new { id = usuario.Cracha });
+        }
 
         public ActionResult IndexCracha(int? cracha)
         {

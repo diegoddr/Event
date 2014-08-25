@@ -1,0 +1,98 @@
+﻿@model IList<Dominio.Entidades.Evento>
+@{
+    ViewBag.Title = "CadastrarEvento";
+}
+
+
+<div class="container col-md-5">
+    <form class="form-horizontal" method="post">
+        <fieldset>
+            <legend>Cadastrar Evento</legend>
+            <div>
+                <label class="control-label">* Nome</label>
+                <div>
+                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label">Descrição</label>
+                <div>
+                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label">* Inicio</label>
+                <div>
+                    <input onchange="validarDataMenor(); validarDiferencaData();" id="tDataInicio" name="Inicio" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataInicio"></span>
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label">* Fim</label>
+                <div>
+                    <input onchange="validarDiferencaData()" id="tfim" name="Fim" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataFim"></span>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="btn-group">
+                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="container col-md-6">
+    <legend>Lista dos Meus Evento</legend>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+            <th>Organizador</th>
+            <th>Criar Modulo</th>
+            <th>Modificar Evento</th>
+            <th>Cancelar Evento</th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Inicio.ToShortDateString()</td>
+                <td>@i.Fim.ToShortDateString()</td>
+                <td>@i.Organizador.Nome</td>
+                <td><button class="btn btn" onclick="location.href='/Modulo/CadastrarModulo/@i.Id'">Novo</button></td>
+                <td><button class="btn btn" onclick="location.href='/Evento/AlterarEvento/@i.Id'">Alterar</button></td>
+                <td><button class="btn btn" onclick="location.href='/Evento/InativarEvento/@i.Id'">Inativar</button></td>
+            </tr>
+        }
+    </table>
+</div>
+
+@section scripts{
+    <script>
+        $("button[type=submit]").click(function (e) {
+            var dataForm = (document.forms[0]["tDataInicio"].value).split("/");
+            var hoje = new Date();
+            var dataInformada = new Date(dataForm[2], dataForm[1] - 1, dataForm[0]);
+            var dataInicio = (document.forms[0]["tDataInicio"].value).split("/");
+            var dataFim = (document.forms[0]["tfim"].value).split("/");
+            var dataInformadaInicio = new Date(dataInicio[2], dataInicio[1] - 1, dataInicio[0]);
+            var dataInformadaFim = new Date(dataFim[2], dataFim[1] - 1, dataFim[0]);
+
+            if (hoje > dataInformada || dataInformadaFim < dataInformadaInicio) {
+                alert("Corrigir os campos em vermelho");
+                e.preventDefault();
+            }
+        });
+    </script>
+}
+
+
+

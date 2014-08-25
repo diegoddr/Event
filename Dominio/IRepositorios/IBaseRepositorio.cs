@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using Dominio.Entidade;
 
 namespace Dominio.Repositorio
@@ -10,5 +11,6 @@ namespace Dominio.Repositorio
         System.Collections.Generic.IList<T> Listar(System.Linq.Expressions.Expression<Func<T, bool>> filtro);
         T ObterPorId(int id);
         bool Remover(T entidade);
+        T ObterPorFiltro(Expression<Func<T, bool>> filtro);
     }
 }

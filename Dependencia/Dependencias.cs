@@ -22,10 +22,12 @@ namespace Dependencia
             _container.Register(Component.For<UsuarioServicos>().ImplementedBy<UsuarioServicos>());
             _container.Register(Component.For<EventoServicos>().ImplementedBy<EventoServicos>());
             _container.Register(Component.For<ModuloServicos>().ImplementedBy<ModuloServicos>());
+            _container.Register(Component.For<InscricaoModuloServicos>().ImplementedBy<InscricaoModuloServicos>());
 
             _container.Register(Component.For<IUsuarioRepositorio>().ImplementedBy<UsuarioRepositorio>());
             _container.Register(Component.For<IEventoRepositorio>().ImplementedBy<EventoRepositorio>());
             _container.Register(Component.For<IModuloRepositorio>().ImplementedBy<ModuloRepositorio>());
+            _container.Register(Component.For<IInscricaoModuloRepositorio>().ImplementedBy<InscricaoModuloRepositorio>());
 
         }
 

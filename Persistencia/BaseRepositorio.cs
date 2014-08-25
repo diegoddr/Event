@@ -55,5 +55,10 @@ namespace Persistencia
         {
             return this.Sessao.Query<T>().FirstOrDefault(e => e.Id == id);
         }
+
+        public T ObterPorFiltro(Expression<Func<T, bool>> filtro)
+        {
+            return this.Sessao.Query<T>().FirstOrDefault(filtro);
+        }
     }
 }

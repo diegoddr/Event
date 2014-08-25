@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "AlterarEvento";
+}
+
+<div class="col-md-3"></div>
+<div class="container col-md-5">
+    <form class="form-horizontal" method="post">
+        <fieldset>
+            <legend>Cadastrar Evento</legend>
+            <div>
+                <label class="control-label">* Nome</label>
+                <div>
+                    <input class="textos" value="@Model.Nome" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">Descrição</label>
+                <div>
+                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição">@Model.Descricao</textarea>
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label">* Inicio</label>
+                <div>
+                    <input onchange="validarDiferencaData()" value="@Model.Inicio.ToShortDateString()" id="tDataInicio" name="Inicio" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataInicio"></span>
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label">* Fim</label>
+                <div>
+                    <input onchange="validarDiferencaData()" value="@Model.Fim.ToShortDateString()" id="tfim" name="Fim" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataFim"></span>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="btn-group">
+                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+@section scripts{
+    <script>
+        $("button[type=submit]").click(function (e) {
+            var dataForm = (document.forms[0]["tDataInicio"].value).split("/");
+            var hoje = new Date();
+            var dataInformada = new Date(dataForm[2], dataForm[1] - 1, dataForm[0]);
+            var dataInicio = (document.forms[0]["tDataInicio"].value).split("/");
+            var dataFim = (document.forms[0]["tfim"].value).split("/");
+            var dataInformadaInicio = new Date(dataInicio[2], dataInicio[1] - 1, dataInicio[0]);
+            var dataInformadaFim = new Date(dataFim[2], dataFim[1] - 1, dataFim[0]);
+
+            if (hoje > dataInformada || dataInformadaFim < dataInformadaInicio) {
+                alert("Corrigir os campos em vermelho");
+                e.preventDefault();
+            }
+        });
+    </script>
+}
+
+
+

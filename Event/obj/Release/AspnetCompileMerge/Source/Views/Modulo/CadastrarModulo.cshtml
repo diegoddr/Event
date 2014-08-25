@@ -1,0 +1,141 @@
+﻿@model Event.ViewModels.DadosModulo
+@{
+    ViewBag.Title = "CadastrarModulo";
+    <!--Isso aqui valida a lista de qm pode mexer-->
+    var usuario = Model.Usuario;
+}
+
+<div class="container col-md-5">
+    <form class="form-horizontal" method="post">
+        <fieldset>
+            <legend>Cadastrar Modulo</legend>
+            <div>
+                <label class="control-label">* Nome</label>
+                <div>
+                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">Descrição</label>
+                <div>
+                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição"></textarea>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Evento</label>
+                <div>
+                    <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
+                        @foreach (var i in Model.Eventos)
+                        {
+                            if (Model.IdEvento > 0 && Model.IdEvento == i.Id)
+                            {
+                                <option value="@i.Id" selected>@i.Nome</option>
+                            }
+                            else
+                            {
+                                <option value="@i.Id">@i.Nome</option>
+                            }
+                            
+                        }
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Vagas</label>
+                <div>
+                    <input onkeypress="return validarNumero()" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Data</label>
+                <div>
+                    <input onchange="validarDataModulo($('#evento').val())" id="tDataInicio" name="Data" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <span style="color:red;" id="erroDataInicio"></span>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Inicio</label>
+                <div>
+                    <input onchange="validarDiferencaHora(); validarHoraInicio();" id="tinicio" name="Inicio" type="text" placeholder="00:00" class="time" required="required">
+                    <span style="color:red;" id="erroHoraInicio"></span>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">* Horário de Fim</label>
+                <div>
+                    <input onchange="validarDiferencaHora(); validarHoraFim();" id="tfim" name="Fim" type="text" placeholder="00:00" class="time" required="required">
+                    <span style="color:red;" id="erroHoraFim"></span>
+                    <span style="color:red;" id="erroDiferencaHora"></span>
+                </div>
+            </div>
+            <div>
+                <label class="control-label">Observação</label>
+                <div>
+                    <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existem Observações?"></textarea>
+                </div>
+            </div>
+
+            <br />
+            <div>
+                <div class="btn-group">
+                    <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                    <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="container col-md-7">
+    <legend>Lista dos Meus Modulos</legend>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+            <th>Vagas</th>
+            <th>Evento</th>
+            <th>Convidar Usuario</th>
+            <th>Modificar Modulo</th>
+            <th>Inativar Modulo</th>
+        </tr>
+        @foreach (var i in Model.Modulos)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Data.ToShortDateString()</td>
+                <td>@i.Inicio</td>
+                <td>@i.Fim</td>
+                <td>@i.Vagas</td>
+                <td>@i.Evento.Nome</td>
+                @if (i.Evento.Organizador == usuario)
+                {
+                    <td><button class="btn btn" onclick="location.href='/Modulo/ConvidarUsuario/@i.Id';">Convidar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/AlterarModulo/@i.Id';">Alterar</button></td>
+                    <td><button class="btn btn" onclick="location.href='/Modulo/InativarModulo/@i.Id';">Inativar</button></td>
+                }
+                else
+                {
+                    <td></td>
+                    <td></td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+
+@section scripts{
+    <script>
+        $("button[type=submit]").click(function (e) {
+            var erroDataInicio = document.getElementById("erroDataInicio").innerHTML;
+            var erroHoraInicio = document.getElementById("erroHoraInicio").innerHTML;
+            var erroDiferencaHora = document.getElementById("erroDiferencaHora").innerHTML;
+            var erroHoraFim = document.getElementById("erroHoraFim").innerHTML;
+            if (erroDataInicio != "" || erroHoraInicio != "" || erroDiferencaHora != "" || erroHoraFim != "") {
+                alert("Preencha os champos em vermelhor");
+                e.preventDefault();
+            }
+        });
+    </script>
+}

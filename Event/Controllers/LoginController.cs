@@ -26,7 +26,7 @@ namespace Event.Controllers
                 var usuario = _usuarioServicos.ObterPorLogin(model.UserName);
                 FormsAuthentication.SetAuthCookie(usuario.Nome, false);
                 Session.Add("Usuario", usuario.Id);
-                return RedirectToAction("IndexCracha", "Home", new {id=usuario.Cracha});
+                return RedirectToAction("Redirecionando", "Home");
             }
             return View(model);
         }

@@ -34,7 +34,10 @@ namespace Dominio.Servicos
         {
             return _moduloRepositorio.Listar(filtro);
         }
-
+        public Modulo ObterPorFiltro(Expression<Func<Modulo, bool>> filtro)
+        {
+            return _moduloRepositorio.ObterPorFiltro(filtro);
+        }
     }
 }
 

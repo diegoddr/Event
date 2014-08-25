@@ -41,14 +41,17 @@
   <ItemGroup>
     <Compile Include="Entidades\EntidadeBase.cs" />
     <Compile Include="Entidades\Evento.cs" />
+    <Compile Include="Entidades\InscricaoModulo.cs" />
     <Compile Include="Entidades\Modulo.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="IRepositorios\IBaseRepositorio.cs" />
     <Compile Include="IRepositorios\IEventoRepositorio.cs" />
+    <Compile Include="IRepositorios\IInscricaoModuloRepositorio.cs" />
     <Compile Include="IRepositorios\IModuloRepositorio.cs" />
     <Compile Include="IRepositorios\IUsuarioRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\EventoServicos.cs" />
+    <Compile Include="Servicos\InscricaoModuloServicos.cs" />
     <Compile Include="Servicos\ModuloServicos.cs" />
     <Compile Include="Servicos\UsuarioServicos.cs" />
   </ItemGroup>

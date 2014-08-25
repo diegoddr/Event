@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="default web site/event" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\VisualStudio\\Event\\Event\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\VisualStudio\\Event\\Event\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Default-Web.config Connection String" description="" value="Data Source= (local)\SQL2012; Initial Catalog=Eventdb; User Id=sa; Password=21" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\VisualStudio\\Event\\Event\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Default']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="DefaultConnection_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\VisualStudio\\Event\\Event\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

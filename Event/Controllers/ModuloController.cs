@@ -121,7 +121,7 @@ namespace Event.Controllers
 
         public JsonResult AceitarConvite(int id)
         {
-            
+
             var modulo = _moduloServicos.ObterPorId(id);
             if (modulo.Usuarios.Count < modulo.Vagas)
             {
@@ -132,8 +132,8 @@ namespace Event.Controllers
                 _moduloServicos.Cadastrar(modulo);
                 return Json("Aceito", JsonRequestBehavior.AllowGet);
             }
-                return Json("Cheio", JsonRequestBehavior.AllowGet);
-            
+            return Json("Cheio", JsonRequestBehavior.AllowGet);
+
         }
         public void InativarModulo(int id)
         {
@@ -148,9 +148,11 @@ namespace Event.Controllers
             var evento = _eventoServicos.ObterPorId(id);
             var dataInicioEvento = evento.Inicio;
             var dataFimEvento = evento.Fim;
-            var result = new {dataInicio = dataInicioEvento.ToShortDateString(), dataFim = dataFimEvento.ToShortDateString()};
-            return Json(result,JsonRequestBehavior.AllowGet);
+            var result = new { dataInicio = dataInicioEvento.ToShortDateString(), dataFim = dataFimEvento.ToShortDateString() };
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+
 
     }
 }

@@ -13,12 +13,14 @@ namespace Event.Controllers
         private readonly ModuloServicos _moduloServicos;
         private readonly EventoServicos _eventoServicos;
         private readonly UsuarioServicos _usuarioServicos;
+        private readonly InscricaoModuloServicos _inscricaoModuloServicos;
         public ModuloController()
         {
             _moduloServicos = Dependencia.Dependencias.Resolver<ModuloServicos>();
             _moduloServicos = Dependencia.Dependencias.Resolver<ModuloServicos>();
             _eventoServicos = Dependencia.Dependencias.Resolver<EventoServicos>();
             _usuarioServicos = Dependencia.Dependencias.Resolver<UsuarioServicos>();
+            _inscricaoModuloServicos = Dependencia.Dependencias.Resolver<InscricaoModuloServicos>();
             _usuario = _usuarioServicos.ObterPorId((int)System.Web.HttpContext.Current.Session["Usuario"]);
         }
 
@@ -26,7 +28,7 @@ namespace Event.Controllers
         {
             var dados = new DadosModulo();
             dados.Eventos = _eventoServicos.Listar(e => e.Organizador == _usuario && e.Fim >= DateTime.Now);
-            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
+            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data.Date >= DateTime.Now.Date && e.Ativo.Equals("S"));
             dados.Usuario = _usuario;
             dados.IdEvento = id.HasValue ? id.Value : 0;
             return View(dados);
@@ -44,9 +46,7 @@ namespace Event.Controllers
         public ActionResult ListarTodosModulos()
         {
             var dados = new DadosModulo();
-            dados.Modulos =
-                _moduloServicos.Listar(
-                    e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
+            dados.Modulos = _moduloServicos.Listar(e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
             dados.Usuario = _usuario;
             return View(dados);
         }
@@ -128,8 +128,15 @@ namespace Event.Controllers
                 var usuario = _usuario;
                 usuario.Modulos.Remove(modulo);
                 _usuarioServicos.Cadastrar(usuario);
-                modulo.Usuarios.Add(usuario);
-                _moduloServicos.Cadastrar(modulo);
+                var confirmaInscricao =
+                    _inscricaoModuloServicos.ObterPorFiltro(e => e.Usuario == usuario && e.Modulo == modulo) ??
+                    new InscricaoModulo();
+                confirmaInscricao.Usuario = usuario;
+                confirmaInscricao.Modulo = modulo;
+                _inscricaoModuloServicos.Cadastrar(confirmaInscricao);
+
+                //modulo.Usuarios.Add(usuario);
+                //_moduloServicos.Cadastrar(modulo);
                 return Json("Aceito", JsonRequestBehavior.AllowGet);
             }
             return Json("Cheio", JsonRequestBehavior.AllowGet);

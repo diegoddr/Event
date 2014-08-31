@@ -28,7 +28,11 @@ namespace Event.Controllers
                 Session.Add("Usuario", usuario.Id);
                 return RedirectToAction("Redirecionando", "Home");
             }
-            return View(model);
+            else
+            {
+                TempData["Login"] = model.UserName;
+                return View(model);
+            }
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

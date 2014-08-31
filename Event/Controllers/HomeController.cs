@@ -29,20 +29,21 @@ namespace Event.Controllers
         public ActionResult IndexCracha(string cracha)
         {
             var usuario = _usuarioServicos.ObterPorId((int)System.Web.HttpContext.Current.Session["Usuario"]);
-            string entrada;
+
             if (cracha != usuario.Cracha.ToString())
             {
-                entrada = cracha;
-            }
-            var obterModulos =
-                _inscricaoModuloServicos.ObterPorFiltro(e=> e.Usuario.Cracha.ToString() == cracha.ToString());
+                var obterModulos =
+                _inscricaoModuloServicos.ObterPorFiltro(e => e.Usuario.Cracha.ToString() == cracha.ToString()
+                    && e.Modulo.Data.Date == DateTime.Now.Date);
 
-            if (obterModulos != null)
-            {
-                obterModulos.Entrada = DateTime.Now.TimeOfDay.ToString();
-                _inscricaoModuloServicos.Cadastrar(obterModulos);
-            }
+                if (obterModulos != null)
+                {
+                    obterModulos.Entrada = DateTime.Now.TimeOfDay.ToString();
+                    _inscricaoModuloServicos.Cadastrar(obterModulos);
+                }
 
+                return View(usuario);
+            }
             return View(usuario);
 
         }

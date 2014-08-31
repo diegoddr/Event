@@ -20,10 +20,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:06:20</publishTime>
     </File>
     <File Include="bin/Dependencia.dll">
-      <publishTime>08/29/2014 13:37:29</publishTime>
+      <publishTime>08/31/2014 19:58:24</publishTime>
     </File>
     <File Include="bin/Dominio.dll">
-      <publishTime>08/29/2014 13:37:28</publishTime>
+      <publishTime>08/31/2014 19:58:24</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.AspNet.dll">
       <publishTime>07/28/2014 08:03:42</publishTime>
@@ -47,7 +47,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:14</publishTime>
     </File>
     <File Include="bin/Event.dll">
-      <publishTime>08/29/2014 13:37:30</publishTime>
+      <publishTime>08/31/2014 19:58:25</publishTime>
     </File>
     <File Include="bin/Iesi.Collections.dll">
       <publishTime>07/28/2014 08:06:08</publishTime>
@@ -65,7 +65,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:06:08</publishTime>
     </File>
     <File Include="bin/Persistencia.dll">
-      <publishTime>08/29/2014 13:37:29</publishTime>
+      <publishTime>08/31/2014 19:58:24</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>07/28/2014 08:03:38</publishTime>
@@ -473,7 +473,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:04</publishTime>
     </File>
     <File Include="Views/Home/IndexCracha.cshtml">
-      <publishTime>08/29/2014 13:37:28</publishTime>
+      <publishTime>08/31/2014 19:53:44</publishTime>
     </File>
     <File Include="Views/Login/Login.cshtml">
       <publishTime>08/29/2014 10:52:10</publishTime>
@@ -524,7 +524,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:04</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/29/2014 13:37:37</publishTime>
+      <publishTime>08/31/2014 19:58:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

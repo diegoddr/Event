@@ -1,6 +1,8 @@
 ﻿@model Dominio.Entidades.Usuario
 @{
     ViewBag.Title = "Home/Acesso";
+    var entrada = TempData["SucessoEntrar"] ?? string.Empty;
+    var saida = TempData["SucessoSair"] ?? string.Empty;
 }
 
 <div class="col-md-9">
@@ -24,3 +26,12 @@
         }
     </table>
 </div>
+<script>
+    var sucessoEntrada = "@entrada";
+    var sucessoSaida = "@saida";
+    if (sucessoEntrada != "") {
+        alert("Entrada realizada com sucesso.");
+    } else if (sucessoSaida != ""){
+        alert("Saida realizada com sucesso.");
+    }
+</script>

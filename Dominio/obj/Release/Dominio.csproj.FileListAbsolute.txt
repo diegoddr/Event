@@ -2,4 +2,3 @@ E:\VisualStudio\Event\Dominio\bin\Release\Dominio.dll
 E:\VisualStudio\Event\Dominio\bin\Release\Dominio.pdb
 E:\VisualStudio\Event\Dominio\obj\Release\Dominio.dll
 E:\VisualStudio\Event\Dominio\obj\Release\Dominio.pdb
-E:\VisualStudio\Event\Dominio\obj\Release\Dominio.csprojResolveAssemblyReference.cache

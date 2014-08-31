@@ -29,19 +29,39 @@ namespace Event.Controllers
         public ActionResult IndexCracha(string cracha)
         {
             var usuario = _usuarioServicos.ObterPorId((int)System.Web.HttpContext.Current.Session["Usuario"]);
-
             if (cracha != usuario.Cracha.ToString())
             {
-                var obterModulos =
-                _inscricaoModuloServicos.ObterPorFiltro(e => e.Usuario.Cracha.ToString() == cracha.ToString()
-                    && e.Modulo.Data.Date == DateTime.Now.Date);
+                var modulosDoDia =
+                    _moduloServicos.Listar(e => e.Usuarios.Any(x => x.Cracha.ToString() == cracha)
+                                                        && e.Data.Date == DateTime.Now.Date);
+                InscricaoModulo moduloDaHora = new InscricaoModulo();
 
-                if (obterModulos != null)
+                foreach (var i in modulosDoDia)
                 {
-                    obterModulos.Entrada = DateTime.Now.TimeOfDay.ToString();
-                    _inscricaoModuloServicos.Cadastrar(obterModulos);
+                    var dezMinutos = DateTime.Parse(i.Inicio).AddMinutes(-10);
+                    var maisDezMinutos = DateTime.Parse(i.Fim).AddMinutes(10);
+                    if (DateTime.Now.TimeOfDay >= dezMinutos.TimeOfDay && DateTime.Now.TimeOfDay <= maisDezMinutos.TimeOfDay)
+                    {
+                        moduloDaHora =
+                            _inscricaoModuloServicos.ObterPorFiltro(e => e.Usuario.Cracha.ToString() == cracha && e.Modulo == i);
+                        break;
+                    }
                 }
+                if (moduloDaHora != null)
+                {
+                    if (moduloDaHora.Entrada != null)
+                    {
+                        moduloDaHora.Saida = DateTime.Now.TimeOfDay.ToString();
+                        _inscricaoModuloServicos.Cadastrar(moduloDaHora);
+                        
+                    }
+                    else
+                    {
+                        moduloDaHora.Entrada = DateTime.Now.TimeOfDay.ToString();
+                        _inscricaoModuloServicos.Cadastrar(moduloDaHora);
+                    }
 
+                }
                 return View(usuario);
             }
             return View(usuario);

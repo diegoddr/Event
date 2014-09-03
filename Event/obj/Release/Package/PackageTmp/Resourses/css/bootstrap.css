@@ -2996,6 +2996,9 @@ input[type="button"].btn-block {
 .glyphicon-tree-deciduous:before {
   content: "\e200";
 }
+.glyphicon-userplus:before {
+  content: "\e081 \e008";
+}
 .caret {
   display: inline-block;
   width: 0;

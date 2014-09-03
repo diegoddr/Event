@@ -2,9 +2,36 @@
     ViewBag.Title = "ListarTodosEventos";
 }
 
-<h2>Lista de Eventos que participo</h2>
+<h3>Lista de Eventos que participo</h3>
 
-<div class="container">
+<div class="container" id="tableCel" style="display: none">
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+            <th>Organizador</th>
+            <th>Criar Modulo</th>
+            <th>Modificar Evento</th>
+            <th>Cancelar Evento</th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Descricao</td>
+                <td>@i.Inicio.ToShortDateString()</td>
+                <td>@i.Fim.ToShortDateString()</td>
+                <td>@i.Organizador.Nome</td>
+                <td><button class="btn btn glyphicon glyphicon-plus" onclick="location.href='../Modulo/CadastrarModulo/@i.Id'"></button></td>
+                <td><button class="btn btn glyphicon glyphicon-refresh" onclick="location.href='../Evento/AlterarEvento/@i.Id'"></button></td>
+                <td><button class="btn btn glyphicon glyphicon-trash" onclick="location.href='../Evento/InativarEvento/@i.Id'"></button></td>
+            </tr>
+        }
+    </table>
+</div>
+<div id="tableCel" style="display: none">
     <table class="table">
         <tr>
             <th>Nome</th>
@@ -31,3 +58,19 @@
         }
     </table>
 </div>
+@section scripts
+{
+    <script>
+        jQuery(document).ready(function ($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+
+            if (agentID) {
+                document.getElementById('tableCel').style.display = "block";
+
+            } else {
+                document.getElementById('tablePc').style.display = "block";
+            }
+        });
+    </script>
+}

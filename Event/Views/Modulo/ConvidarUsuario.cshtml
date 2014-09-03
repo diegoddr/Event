@@ -4,9 +4,9 @@
     ViewBag.Title = "Convidar";
 }
 
-<h2>Convidar Usuarios para Modulo</h2>
+<h3>Convidar Usuarios para Modulo</h3>
 
-<div class="container col-md-6">
+<div class="container col-md-12" id="tablePc" style="display: none">
     <form class="form-horizontal" method="post">
         <table class="table">
             <tr>
@@ -39,3 +39,49 @@
         <input type="text" value="@Model.Modulo.Id" name="Modulo" hidden />
     </form>
 </div>
+
+<div class="container col-md-6" id="tableCel" style="display: none">
+    <form class="form-horizontal" method="post">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th></th>
+
+            </tr>
+            @foreach (var i in Model.Usuarios.OrderBy(e => e.Nome))
+            {
+                var usu = i.Id + "usu";
+                <tr>
+                    <td><input type="checkbox" name="@usu"></td>
+                    <td>@i.Nome</td>
+                    <td>@i.Email</td>
+                </tr>
+            }
+        </table>
+        <br />
+        <div>
+            <div class="btn-group">
+                <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
+                <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
+            </div>
+        </div>
+        <input type="text" value="@Model.Modulo.Id" name="Modulo" hidden />
+    </form>
+</div>
+
+@section scripts
+{
+    <script>
+        jQuery(document).ready(function ($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+
+            if (agentID) {
+                document.getElementById('tableCel').style.display = "block";
+
+            } else {
+                document.getElementById('tablePc').style.display = "block";
+            }
+        });
+    </script>
+}

@@ -57,14 +57,14 @@ namespace Event.Controllers
                         moduloDaHora.Saida = DateTime.Now.TimeOfDay.ToString();
                         _inscricaoModuloServicos.Cadastrar(moduloDaHora);
                         TempData["SucessoSair"] = "Horário de saida salvo";
-                        return RedirectToAction("Redirecionando");
+                        //return RedirectToAction("Redirecionando");
                     }
                     else
                     {
                         moduloDaHora.Entrada = DateTime.Now.TimeOfDay.ToString();
                         _inscricaoModuloServicos.Cadastrar(moduloDaHora);
                         TempData["SucessoEntrar"] = "Horário de entrada salvo";
-                        return RedirectToAction("Redirecionando");
+                        //return RedirectToAction("Redirecionando");
                     }
 
                 }

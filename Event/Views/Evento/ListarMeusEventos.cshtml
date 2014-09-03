@@ -2,9 +2,8 @@
     ViewBag.Title = "ListarMeusEventos";
 }
 
-<h2>Listar Eventos Abertos</h2>
-
-<div class="container">
+<div id="tablePc" class="container" style="display: none">
+    <h3>Listar Eventos Abertos</h3>
     <table class="table">
         <tr>
             <th>Nome</th>
@@ -24,10 +23,44 @@
                 <td>@i.Inicio.ToShortDateString()</td>
                 <td>@i.Fim.ToShortDateString()</td>
                 <td>@i.Organizador.Nome</td>
-                <td><button class="btn btn" onclick="location.href='../Modulo/CadastrarModulo?id=@i.Id'">Novo</button></td>
+                <td><button class="btn btn glyphicon glyphicon-plus" onclick="location.href='../Modulo/CadastrarModulo?id=@i.Id'"></button></td>
                 <td><button class="btn btn glyphicon glyphicon-refresh" onclick="location.href='../Evento/AlterarEvento/@i.Id'"></button></td>
                 <td><button class="btn btn glyphicon glyphicon-trash" onclick="location.href='../Evento/InativarEvento/@i.Id'"></button></td>
             </tr>
         }
     </table>
 </div>
+<div id="tableCel" style="display: none">
+    <h3>Listar Eventos Abertos</h3>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Inicio.ToShortDateString()</td>
+                <td>@i.Fim.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>
+@section scripts
+{
+    <script>
+        jQuery(document).ready(function ($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+
+            if (agentID) {
+                document.getElementById('tableCel').style.display = "block";
+
+            } else {
+                document.getElementById('tablePc').style.display = "block";
+            }
+        });
+    </script>
+}

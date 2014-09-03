@@ -245,9 +245,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\datepicker.gif" />
+    <Content Include="favicon.ico" />
     <Content Include="Resourses\css\bootstrap-theme.css.map" />
     <Content Include="Resourses\css\bootstrap.css.map" />
     <Content Include="Resourses\css\jQuery-ui.css" />

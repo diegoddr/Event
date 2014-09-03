@@ -6,7 +6,7 @@
 
 <h2>Listar Módulos Antigos</h2>
 
-<div class="container">
+<div id="tablePc" class="container" style="display: none">
     <table class="table">
         <tr>
             <th>Nome</th>
@@ -17,8 +17,8 @@
             <th>Vagas</th>
             <th>Evento</th>
             @*<th>Convidar Usuario</th>
-            <th>Modificar Modulo</th>
-            <th>Inativar Modulo</th>*@
+                <th>Modificar Modulo</th>
+                <th>Inativar Modulo</th>*@
         </tr>
         @foreach (var i in Model.Modulos)
         {
@@ -31,17 +31,54 @@
                 <td>@i.Vagas</td>
                 <td>@i.Evento.Nome</td>
                 @*if (i.Evento.Organizador == usuario)
-                {
-                    <td><button onclick=" location.href='/Modulo/ConvidarUsuario/@i.Id' ">Convidar</button></td>
-                    <td><button onclick=" location.href='/Modulo/AlterarModulo/@i.Id' ">Alterar</button></td>
-                }
-                else
-                {
-                    <td></td>
-                    <td></td>
-                }
-                <td>X</td>*@
+                    {
+                        <td><button onclick=" location.href='/Modulo/ConvidarUsuario/@i.Id' ">Convidar</button></td>
+                        <td><button onclick=" location.href='/Modulo/AlterarModulo/@i.Id' ">Alterar</button></td>
+                    }
+                    else
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    <td>X</td>*@
             </tr>
         }
     </table>
 </div>
+
+<div id="tableCel" style="display: none">
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+        </tr>
+        @foreach (var i in Model.Modulos)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Data.ToShortDateString()</td>
+                <td>@i.Inicio</td>
+                <td>@i.Fim</td>
+            </tr>
+        }
+    </table>
+</div>
+
+@section scripts
+{
+    <script>
+        jQuery(document).ready(function ($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+
+            if (agentID) {
+                document.getElementById('tableCel').style.display = "block";
+
+            } else {
+                document.getElementById('tablePc').style.display = "block";
+            }
+        });
+    </script>
+}

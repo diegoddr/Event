@@ -1,5 +1,5 @@
 ﻿@{
-    var idUsuario = (int) HttpContext.Current.Session["usuario"];
+    var idUsuario = (int)HttpContext.Current.Session["usuario"];
 }
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
@@ -16,13 +16,13 @@
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Página Inicial", "Redirecionando", "Home")</li>
                 @*<li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Usuario", "CadastrarUsuario", "Usuario")</li>*@
+                    <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Usuario", "CadastrarUsuario", "Usuario")</li>*@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evento<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("Cadastrar Evento", "CadastrarEvento", "Evento")</li>
-                        <li>@Html.ActionLink("Listar Meus Evento", "ListarMeusEventos", "Evento")</li>
+                        <li>@Html.ActionLink("Listar Meus Eventos", "ListarMeusEventos", "Evento")</li>
                         @*<li>@Html.ActionLink("Listar Eventos Comigo", "ListarTodosEventos", "Evento")</li>*@
                         <li>@Html.ActionLink("Listar Eventos Antigos", "ListarEventosAntigos", "Evento")</li>
                     </ul>
@@ -37,14 +37,14 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="~/Usuario/AlterarUsuario/@idUsuario">Alterar Perfil</a></li>
                         <li><a href="~/Login/Logout">Sair</a></li>
                     </ul>
                 </li>
             </ul>
-            @*<button class="btn btn" title="Logout" onclick="javascript: location.href = '/Login/Logout';">Logout</button>*@        
+            @*<button class="btn btn" title="Logout" onclick="javascript: location.href = '/Login/Logout';">Logout</button>*@
         </div>
     </div>
 </nav>

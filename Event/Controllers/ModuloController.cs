@@ -46,14 +46,14 @@ namespace Event.Controllers
         public ActionResult ListarTodosModulos()
         {
             var dados = new DadosModulo();
-            dados.Modulos = _moduloServicos.Listar(e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
+            dados.Modulos = _moduloServicos.Listar(e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data.Date >= DateTime.Now.Date && e.Ativo.Equals("S"));
             dados.Usuario = _usuario;
             return View(dados);
         }
         public ActionResult ListarMeusModulos()
         {
             var dados = new DadosModulo();
-            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data >= DateTime.Now && e.Ativo.Equals("S"));
+            dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data.Date >= DateTime.Now.Date && e.Ativo.Equals("S"));
             return View(dados);
         }
         public ActionResult ListarModulosAntigos()
@@ -61,7 +61,7 @@ namespace Event.Controllers
             var dados = new DadosModulo();
             dados.Modulos =
                 _moduloServicos.Listar(
-                    e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data < DateTime.Now);
+                    e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data.Date < DateTime.Now.Date);
             return View(dados);
         }
         public ActionResult AlterarModulo(int id)
@@ -110,7 +110,6 @@ namespace Event.Controllers
             }
             return RedirectToAction("CadastrarModulo");
         }
-
         public void RecusarConvite(int id)
         {
             var modulo = _moduloServicos.ObterPorId(id);
@@ -118,7 +117,6 @@ namespace Event.Controllers
             usuario.Modulos.Remove(modulo);
             _usuarioServicos.Cadastrar(usuario);
         }
-
         public JsonResult AceitarConvite(int id)
         {
 
@@ -149,7 +147,6 @@ namespace Event.Controllers
             _moduloServicos.Cadastrar(modulo);
             Response.Redirect("/Modulo/CadastrarModulo");
         }
-
         public JsonResult validarDataModulo(int id)
         {
             var evento = _eventoServicos.ObterPorId(id);

@@ -28,17 +28,17 @@
             <h2 class="form-signin-heading">Acesso Evento</h2>
             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Usuario", @autofocus = "true", @id = "login", @required = "true", @title = "Somente caracteres" })
             @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", @placeholder = "Senha", @id = "password", @required = "true", @title = "Somente bolinhas" })
-            <label class="checkbox">
+            @*<label class="checkbox">
                 <input type="checkbox" value="remember-me"> Lembre-me
-            </label>
+            </label>*@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
         </form>
     </div>
     <div class="container form-signin">
         Caso você ainda não seja usuario<br />
-        Clique abaixo e faça cadastre-se<br />
+        Clique abaixo e faça seu cadastro<br />
         Levará só um minutinho!
-        <a>@Html.ActionLink("Cadastrar Modulo", "CadastrarUsuario", "Usuario")</a>
+        <a>@Html.ActionLink("Cadastra-se", "CadastrarUsuario", "Usuario")</a>
     </div>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.8.20.js"></script>

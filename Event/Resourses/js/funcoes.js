@@ -20,7 +20,7 @@ $(".calendario").datepicker({
     dateFormat: 'dd/mm/yy',
     buttonImageOnly: true,
     showOn: "button",
-    buttonImage: "/Images/datepicker.gif",
+    buttonImage: "../Images/datepicker.gif",
     dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
     dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
     dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
@@ -45,7 +45,7 @@ function aceitarConvite(id) {
         type: "POST",
         url: '/Modulo/AceitarConvite/',
         data: { id: id },
-        success: function(e) {
+        success: function (e) {
             if (e == "Aceito") {
                 alert("Convite Aceito!");
                 location.reload();
@@ -53,7 +53,7 @@ function aceitarConvite(id) {
                 alert("Evento Lotado! Contate o organizador.");
                 location.reload();
             }
-            
+
         }
     });
 }
@@ -141,15 +141,15 @@ function validarDiferencaHora() {
     var hrsFim = (document.forms[0].tfim.value.substring(0, 2));
     var minFim = (document.forms[0].tfim.value.substring(3, 5));
     if ((hrsInicio >= hrsFim && minInicio > minFim) || hrsInicio > hrsFim) {
-        
-            document.getElementById("erroDiferencaHora").innerHTML = "Hora fim deve ser após hora inicio";
-            //document.getElementById("tinicio").focus();
-         
+
+        document.getElementById("erroDiferencaHora").innerHTML = "Hora fim deve ser após hora inicio";
+        //document.getElementById("tinicio").focus();
+
     } else {
         document.getElementById("erroDiferencaHora").innerHTML = "";
         document.getElementById("erroHoraFim").innerHTML = "";
     }
-    
+
 }
 
 function validarNumero(e) {

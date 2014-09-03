@@ -31,7 +31,11 @@
     var sucessoSaida = "@saida";
     if (sucessoEntrada != "") {
         alert("Entrada realizada com sucesso.");
+        window.opener = window;
+        window.close();
     } else if (sucessoSaida != ""){
-        alert("Saida realizada com sucesso.");
+        //alert("Saida realizada com sucesso.");
+        window.opener = self;
+        self.close("#");
     }
 </script>

@@ -5,7 +5,7 @@
     var usuario = Model.Usuario;
 }
 
-<div class="container col-md-5">
+<div class="container col-md-5 col-sm-5">
     <form class="form-horizontal" method="post">
         <fieldset>
             <legend>Cadastrar Módulo</legend>
@@ -35,7 +35,7 @@
                             {
                                 <option value="@i.Id">@i.Nome</option>
                             }
-                            
+
                         }
                     </select>
                 </div>
@@ -86,7 +86,9 @@
     </form>
 </div>
 
-<div class="container col-md-7">
+
+
+<div class="container col-md-7 col-sm-7" id="tablePc" style="display: none">
     <legend>Lista dos Meus Módulos</legend>
     <table class="table">
         <tr>
@@ -111,7 +113,7 @@
                 <td>@i.Evento.Nome</td>
                 @if (i.Evento.Organizador == usuario)
                 {
-                    <td><button class="btn btn glyphicon glyphicon-user" onclick="location.href='../Modulo/ConvidarUsuario/@i.Id';"></button></td>
+                    <td><button class="btn btn glyphicon glyphicon-userplus" onclick="location.href='../Modulo/ConvidarUsuario/@i.Id';"></button></td>
                     <td><button class="btn btn glyphicon glyphicon-refresh" onclick="location.href='../Modulo/AlterarModulo/@i.Id';"></button></td>
                     <td><button class="btn btn glyphicon glyphicon-trash" onclick="location.href='../Modulo/InativarModulo/@i.Id';"></button></td>
                 }
@@ -125,6 +127,30 @@
     </table>
 </div>
 
+<div class="container col-md-7 col-sm-7" id="tableCel" style="display: none">
+    <br />
+    <br />
+    <legend>Lista dos Meus Módulos</legend>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+        </tr>
+        @foreach (var i in Model.Modulos)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Data.ToShortDateString()</td>
+                <td>@i.Inicio</td>
+                <td>@i.Fim</td>
+            </tr>
+        }
+    </table>
+</div>
+
+
 @section scripts{
     <script>
         $("button[type=submit]").click(function (e) {
@@ -135,6 +161,17 @@
             if (erroDataInicio != "" || erroHoraInicio != "" || erroDiferencaHora != "" || erroHoraFim != "") {
                 alert("Preencha os champos em vermelhor");
                 e.preventDefault();
+            }
+        });
+        jQuery(document).ready(function ($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+
+            if (agentID) {
+                document.getElementById('tableCel').style.display = "block";
+
+            } else {
+                document.getElementById('tablePc').style.display = "block";
             }
         });
     </script>

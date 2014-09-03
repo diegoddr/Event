@@ -2,9 +2,9 @@
     ViewBag.Title = "ListarEventosAntigos";
 }
 
-<h2>Lista de Eventos Antigos</h2>
+<h3>Lista de Eventos Antigos</h3>
 
-<div class="container">
+<div id="tablePc" class="container" style="display: none">
     <table class="table">
         <tr>
             <th>Nome</th>
@@ -25,9 +25,43 @@
                 <td>@i.Fim.ToShortDateString()</td>
                 <td>@i.Organizador.Nome</td>
                 @*<td><button onclick="location.href='../Modulo/CadastrarModulo/@i.Id'">Novo</button></td>
-                <td><button onclick="location.href='../Evento/AlterarEvento/@i.Id'">Alterar</button></td>
-                <td><button onclick="location.href='../Evento/InativarEvento/@i.Id'">Inativar</button></td>*@
+                    <td><button onclick="location.href='../Evento/AlterarEvento/@i.Id'">Alterar</button></td>
+                    <td><button onclick="location.href='../Evento/InativarEvento/@i.Id'">Inativar</button></td>*@
             </tr>
         }
     </table>
 </div>
+<div id="tableCel" style="display: none">
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Inicio.ToShortDateString()</td>
+                <td>@i.Fim.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>
+@section scripts
+{
+    <script>
+        jQuery(document).ready(function ($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+
+            if (agentID) {
+                document.getElementById('tableCel').style.display = "block";
+
+            } else {
+                document.getElementById('tablePc').style.display = "block";
+            }
+        });
+    </script>
+}

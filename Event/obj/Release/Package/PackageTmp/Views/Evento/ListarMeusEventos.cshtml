@@ -2,9 +2,8 @@
     ViewBag.Title = "ListarMeusEventos";
 }
 
-<h2>Listar Eventos Abertos</h2>
-
-<div class="container">
+<div id="tablePc" class="container" style="display: none">
+    <h2>Listar Eventos Abertos</h2>
     <table class="table">
         <tr>
             <th>Nome</th>
@@ -31,3 +30,37 @@
         }
     </table>
 </div>
+<div id="tableCel" style="display: none">
+    <h2>Listar Eventos Abertos</h2>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Inicio</th>
+            <th>Fim</th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Inicio.ToShortDateString()</td>
+                <td>@i.Fim.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>
+@section scripts
+{
+    <script>
+        jQuery(document).ready(function ($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+
+            if (agentID) {
+                document.getElementById('tableCel').style.display = "block";
+
+            } else {
+                document.getElementById('tablePc').style.display = "block";
+            }
+        });
+    </script>
+}

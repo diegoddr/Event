@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div>
-                <label class="control-label">* Horário de Inicio</label>
+                <label class="control-label">* Horário de Início</label>
                 <div>
                     <input onchange="validarDiferencaHora(); validarHoraInicio();" id="tinicio" name="Inicio" type="text" placeholder="00:00" class="time" required="required">
                     <span style="color:red;" id="erroHoraInicio"></span>
@@ -94,13 +94,11 @@
         <tr>
             <th>Nome</th>
             <th>Data</th>
-            <th>Inicio</th>
+            <th>Início</th>
             <th>Fim</th>
             <th>Vagas</th>
             <th>Evento</th>
-            <th>Convidar Usuario</th>
-            <th>Modificar Modulo</th>
-            <th>Inativar Modulo</th>
+            <th></th>
         </tr>
         @foreach (var i in Model.Modulos)
         {
@@ -113,9 +111,11 @@
                 <td>@i.Evento.Nome</td>
                 @if (i.Evento.Organizador == usuario)
                 {
-                    <td><button class="btn btn glyphicon glyphicon-userplus" onclick="location.href='../Modulo/ConvidarUsuario/@i.Id';"></button></td>
-                    <td><button class="btn btn glyphicon glyphicon-refresh" onclick="location.href='../Modulo/AlterarModulo/@i.Id';"></button></td>
-                    <td><button class="btn btn glyphicon glyphicon-trash" onclick="location.href='../Modulo/InativarModulo/@i.Id';"></button></td>
+                    <td class="btn-group">
+                        <button class="btn btn-default col-xs-4" title="Convidar Usuario" onclick="location.href='../Modulo/ConvidarUsuario/@i.Id';"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span></button>
+                        <button class="btn btn-default col-xs-4" title="Alterar Usuario" onclick="location.href='../Modulo/AlterarModulo/@i.Id';"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button class="btn btn-default col-xs-4" title="Delete Usuario" onclick="location.href='../Modulo/InativarModulo/@i.Id';"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
                 }
                 else
                 {
@@ -135,7 +135,7 @@
         <tr>
             <th>Nome</th>
             <th>Data</th>
-            <th>Inicio</th>
+            <th>Início</th>
             <th>Fim</th>
         </tr>
         @foreach (var i in Model.Modulos)

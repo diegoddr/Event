@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Dependencia;
 using Dominio.Entidades;
 using Dominio.Servicos;
@@ -12,7 +14,6 @@ namespace Event.Controllers
         private readonly UsuarioServicos _usuarioServicos;
         private readonly ModuloServicos _moduloServicos;
         private readonly InscricaoModuloServicos _inscricaoModuloServicos;
-
         public HomeController()
         {
             _usuarioServicos = Dependencias.Resolver<UsuarioServicos>();
@@ -26,7 +27,6 @@ namespace Event.Controllers
             var usuario = _usuarioServicos.ObterPorId((int)System.Web.HttpContext.Current.Session["Usuario"]);
             return RedirectToAction("IndexCracha", "Home", new { cracha = usuario.Cracha.ToString() });
         }
-
         public ActionResult IndexCracha(string cracha)
         {
             TempData["SucessoSair"] = TempData["SucessoSair"];
@@ -57,14 +57,14 @@ namespace Event.Controllers
                         moduloDaHora.Saida = DateTime.Now.TimeOfDay.ToString();
                         _inscricaoModuloServicos.Cadastrar(moduloDaHora);
                         TempData["SucessoSair"] = "Horário de saida salvo";
-                        //return RedirectToAction("Redirecionando");
+                        return RedirectToAction("Redirecionando");
                     }
                     else
                     {
                         moduloDaHora.Entrada = DateTime.Now.TimeOfDay.ToString();
                         _inscricaoModuloServicos.Cadastrar(moduloDaHora);
                         TempData["SucessoEntrar"] = "Horário de entrada salvo";
-                        //return RedirectToAction("Redirecionando");
+                        return RedirectToAction("Redirecionando");
                     }
 
                 }

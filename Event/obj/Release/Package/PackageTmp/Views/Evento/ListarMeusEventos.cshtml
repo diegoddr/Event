@@ -3,17 +3,16 @@
 }
 
 <div id="tablePc" class="container" style="display: none">
-    <h2>Listar Eventos Abertos</h2>
+    <h3>Listar Eventos Abertos</h3>
     <table class="table">
         <tr>
             <th>Nome</th>
-            <th>Descricao</th>
-            <th>Inicio</th>
+            <th>Descrição</th>
+            <th>Início</th>
             <th>Fim</th>
             <th>Organizador</th>
-            <th>Criar Modulo</th>
-            <th>Modificar Evento</th>
-            <th>Cancelar Evento</th>
+            <th></th>
+            
         </tr>
         @foreach (var i in Model)
         {
@@ -23,19 +22,21 @@
                 <td>@i.Inicio.ToShortDateString()</td>
                 <td>@i.Fim.ToShortDateString()</td>
                 <td>@i.Organizador.Nome</td>
-                <td><button class="btn btn" onclick="location.href='../Modulo/CadastrarModulo?id=@i.Id'">Novo</button></td>
-                <td><button class="btn btn glyphicon glyphicon-refresh" onclick="location.href='../Evento/AlterarEvento/@i.Id'"></button></td>
-                <td><button class="btn btn glyphicon glyphicon-trash" onclick="location.href='../Evento/InativarEvento/@i.Id'"></button></td>
+                <td class="btn-group">
+                    <button class="btn btn-default col-sm-4" title="Criar Novo Modulo" onclick="location.href='../Modulo/CadastrarModulo/@i.Id'"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button class="btn btn-default col-sm-4" title="Alterar Evento" onclick="location.href='../Evento/AlterarEvento/@i.Id'"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-default col-sm-4" title="Deletar Evento" onclick="location.href='../Evento/InativarEvento/@i.Id'"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
             </tr>
         }
     </table>
 </div>
 <div id="tableCel" style="display: none">
-    <h2>Listar Eventos Abertos</h2>
+    <h3>Listar Eventos Abertos</h3>
     <table class="table">
         <tr>
             <th>Nome</th>
-            <th>Inicio</th>
+            <th>Início</th>
             <th>Fim</th>
         </tr>
         @foreach (var i in Model)

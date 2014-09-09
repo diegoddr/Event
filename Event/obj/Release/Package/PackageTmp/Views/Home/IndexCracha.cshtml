@@ -12,30 +12,39 @@
     <h4>Convites</h4>
     <table class="table">
         <tr>
-            <th>Modulo</th>
-            <th>Aceitar</th>
-            <th>Recusar</th>
+            <th>Módulos</th>
+            <th></th>
         </tr>
         @foreach (var i in Model.Modulos)
         {
             <tr>
                 <td>@i.Nome</td>
-                <td><button onclick="aceitarConvite(@i.Id)">Aceitar</button></td>
-                <td><button onclick="recusarConvite(@i.Id)">Recusar</button></td>
+                <td class="btn-group">
+                    <button class="btn btn-default col-sm-6 btn-sm glyphicon glyphicon-ok-circle" title="Aceitar" onclick="aceitarConvite(@i.Id)"></button>
+                    <button class="btn btn-default col-sm-6 btn-sm glyphicon glyphicon-remove-circle" title="Recusar" onclick="recusarConvite(@i.Id)"></button>
+                </td>
+                
             </tr>
         }
     </table>
+    @*<input type="button" onclick="fechatudo()" />*@
 </div>
+
+@section scripts
+{
 <script>
     var sucessoEntrada = "@entrada";
     var sucessoSaida = "@saida";
     if (sucessoEntrada != "") {
         alert("Entrada realizada com sucesso.");
-        window.opener = window;
-        window.close();
+
     } else if (sucessoSaida != ""){
-        //alert("Saida realizada com sucesso.");
-        window.opener = self;
-        self.close("#");
+        alert("Saida realizada com sucesso.");
+
+    }
+
+    function fechatudo() {
+        self.close();
     }
 </script>
+}

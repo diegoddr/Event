@@ -123,6 +123,19 @@ namespace Event.Controllers
             var modulo = _moduloServicos.ObterPorId(id);
             if (modulo.Usuarios.Count < modulo.Vagas)
             {
+                var modulosDoDia =
+                        _moduloServicos.Listar(e => e.Usuarios.Contains(_usuario) && e.Data.Date == DateTime.Now.Date);
+                InscricaoModulo moduloDaHora = new InscricaoModulo();
+                foreach (var i in modulosDoDia)
+                {
+                    var dezMinutos = DateTime.Parse(i.Inicio).AddMinutes(-10);
+                    var maisDezMinutos = DateTime.Parse(i.Fim).AddMinutes(10);
+                    if (DateTime.Parse(modulo.Inicio).TimeOfDay >= dezMinutos.TimeOfDay && DateTime.Parse(modulo.Fim).TimeOfDay <= maisDezMinutos.TimeOfDay)
+                    {
+                        return Json("Existente", JsonRequestBehavior.AllowGet);
+                    }
+                } 
+                //Logica que salva.
                 var usuario = _usuario;
                 usuario.Modulos.Remove(modulo);
                 _usuarioServicos.Cadastrar(usuario);
@@ -133,8 +146,6 @@ namespace Event.Controllers
                 confirmaInscricao.Modulo = modulo;
                 _inscricaoModuloServicos.Cadastrar(confirmaInscricao);
 
-                //modulo.Usuarios.Add(usuario);
-                //_moduloServicos.Cadastrar(modulo);
                 return Json("Aceito", JsonRequestBehavior.AllowGet);
             }
             return Json("Cheio", JsonRequestBehavior.AllowGet);
@@ -156,8 +167,16 @@ namespace Event.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-
-
+        public void SairModulo(int id)
+        {
+            var inscricao = _moduloServicos.ObterPorId(id);
+            var convite = _usuarioServicos.ObterPorId(id);
+            var usuario = _usuario;
+            inscricao.Usuarios.Remove(usuario);
+            _moduloServicos.Cadastrar(inscricao);
+            usuario.Modulos.Add(inscricao);
+            _usuarioServicos.Cadastrar(usuario);
+        }
     }
 }
 

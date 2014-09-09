@@ -1,6 +1,6 @@
 ﻿@model Event.ViewModels.DadosModulo
 @{
-    ViewBag.Title = "Alterar Modulo";
+    ViewBag.Title = "AlterarMódulo";
 }
 
 <div class="col-md-3"></div>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div>
-                <label class="control-label">* Horário de Inicio</label>
+                <label class="control-label">* Horário de Início</label>
                 <div>
                     <input onchange="validarDiferencaHora(); validarHoraInicio();" value="@Model.Modulo.Inicio" id="tinicio" name="Inicio" type="text" class="time" placeholder="00:00" required="required">
                     <span style="color:red;" id="erroHoraInicio"></span>

@@ -31,7 +31,7 @@ $(".calendario").datepicker({
 function recusarConvite(id) {
     $.ajax({
         type: "POST",
-        url: '/Modulo/RecusarConvite/',
+        url: '../Modulo/RecusarConvite/',
         data: { id: id },
         success: function () {
             alert("Convite Recusado!");
@@ -39,17 +39,33 @@ function recusarConvite(id) {
         }
     });
 }
+function sairModulo(id) {
+    $.ajax({
+        type: "POST",
+        url: '../Modulo/SairModulo/',
+        data: { id: id },
+        success: function() {
+            alert("Inscrição cancelada, o módulo se encontra na sua lista de convites.");
+            location.reload();
+        }
+    });
+}
+
+
 
 function aceitarConvite(id) {
     $.ajax({
         type: "POST",
-        url: '/Modulo/AceitarConvite/',
+        url: '../Modulo/AceitarConvite/',
         data: { id: id },
         success: function (e) {
             if (e == "Aceito") {
                 alert("Convite Aceito!");
                 location.reload();
-            } else {
+            } else if (e =="Existente") {
+                alert("Você ja tem um compromisso nesse horário, desmaque seu modulo para aceitar esse.");
+            }
+            else {
                 alert("Evento Lotado! Contate o organizador.");
                 location.reload();
             }
@@ -57,6 +73,7 @@ function aceitarConvite(id) {
         }
     });
 }
+
 //Valida data de nacimento!! \o/
 function validarDataMaior() {
     var dataForm = (document.forms[0]["tnascimento"].value).split("/");
@@ -163,7 +180,7 @@ function validarNumero(e) {
 function validarDataModulo(id) {
     $.ajax({
         type: "GET",
-        url: '/Modulo/validarDataModulo/',
+        url: '../Modulo/validarDataModulo/',
         data: { id: id },
         success: function (res) {
             var dataForm = (document.forms[0]["tDataInicio"].value).split("/");

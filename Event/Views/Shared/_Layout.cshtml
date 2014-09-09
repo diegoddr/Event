@@ -3,40 +3,41 @@
 }
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title - Meu aplicativo ASP.NET MVC</title>
-    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Resourses/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Resourses/css/jQuery-ui.css" rel="stylesheet" />
-    @Scripts.Render("~/bundles/modernizr")
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Meu aplicativo ASP.NET MVC</title>
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Resourses/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/Resourses/css/jQuery-ui.css" rel="stylesheet" />
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
 <body>
     <div class="">
-        <header>
-            <div class="content-wrapper">
-                @*<div class="float-left">
+            <header>
+                <div class="content-wrapper">
+                    @*<div class="float-left">
                         <p class="site-title">@Html.ActionLink("seu logo aqui", "Index", "Home")</p>
                     </div>*@
-                <div class="float-right">
-                    @if (user)
-                    {
-                        @RenderPage("_Menu.cshtml")
-                    }
+                    <div class="float-right">
+                        @if (user)
+                        {
+                            @RenderPage("_Menu.cshtml")
+                        }
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+
         <div id="body" class="container">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
         </div>
-        <footer>
-
-            <hr />
+        
+        <hr />
+        <footer class="container">
             <div class="content-wrapper">
                 <div class="float-left">
                     <p>&copy; @DateTime.Now.Year - Event by Diego Rosa - ASP.NET MVC</p>

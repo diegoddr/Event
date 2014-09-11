@@ -39,19 +39,6 @@ function recusarConvite(id) {
         }
     });
 }
-function sairModulo(id) {
-    $.ajax({
-        type: "POST",
-        url: '../Modulo/SairModulo/',
-        data: { id: id },
-        success: function() {
-            alert("Inscrição cancelada, o módulo se encontra na sua lista de convites.");
-            location.reload();
-        }
-    });
-}
-
-
 
 function aceitarConvite(id) {
     $.ajax({
@@ -62,7 +49,7 @@ function aceitarConvite(id) {
             if (e == "Aceito") {
                 alert("Convite Aceito!");
                 location.reload();
-            } else if (e =="Existente") {
+            } else if (e == "Existente") {
                 alert("Você ja tem um compromisso nesse horário, desmaque seu modulo para aceitar esse.");
             }
             else {
@@ -70,6 +57,18 @@ function aceitarConvite(id) {
                 location.reload();
             }
 
+        }
+    });
+}
+
+function sairModulo(id) {
+    $.ajax({
+        type: "POST",
+        url: '../Modulo/SairModulo/',
+        data: { id: id },
+        success: function() {
+            alert("Inscrição cancelada, o módulo se encontra na sua lista de convites.");
+            location.reload();
         }
     });
 }

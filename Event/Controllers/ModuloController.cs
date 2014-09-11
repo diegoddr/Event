@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Dominio.Entidades;
 using Dominio.Servicos;
 using Event.ViewModels;
+using NHibernate.Criterion;
 
 namespace Event.Controllers
 {
@@ -124,17 +125,23 @@ namespace Event.Controllers
             if (modulo.Usuarios.Count < modulo.Vagas)
             {
                 var modulosDoDia =
-                        _moduloServicos.Listar(e => e.Usuarios.Contains(_usuario) && e.Data.Date == DateTime.Now.Date);
+                        _moduloServicos.Listar(e => e.Usuarios.Contains(_usuario) && e.Data.Date == modulo.Data.Date);
                 InscricaoModulo moduloDaHora = new InscricaoModulo();
                 foreach (var i in modulosDoDia)
                 {
-                    var dezMinutos = DateTime.Parse(i.Inicio).AddMinutes(-10);
-                    var maisDezMinutos = DateTime.Parse(i.Fim).AddMinutes(10);
-                    if (DateTime.Parse(modulo.Inicio).TimeOfDay >= dezMinutos.TimeOfDay && DateTime.Parse(modulo.Fim).TimeOfDay <= maisDezMinutos.TimeOfDay)
+                    var inicioDoDia = DateTime.Parse(i.Inicio);
+                    var fimDoDia = DateTime.Parse(i.Fim);
+                    if (DateTime.Parse(modulo.Inicio).TimeOfDay >= inicioDoDia.TimeOfDay &&
+                        DateTime.Parse(modulo.Inicio).TimeOfDay <= fimDoDia.TimeOfDay)
                     {
                         return Json("Existente", JsonRequestBehavior.AllowGet);
                     }
-                } 
+                    else if (DateTime.Parse(modulo.Fim).TimeOfDay >= inicioDoDia.TimeOfDay &&
+                             DateTime.Parse(modulo.Fim).TimeOfDay <= fimDoDia.TimeOfDay)
+                    {
+                        return Json("Existente", JsonRequestBehavior.AllowGet);
+                    }
+                }
                 //Logica que salva.
                 var usuario = _usuario;
                 usuario.Modulos.Remove(modulo);
@@ -166,7 +173,6 @@ namespace Event.Controllers
             var result = new { dataInicio = dataInicioEvento.ToShortDateString(), dataFim = dataFimEvento.ToShortDateString() };
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
         public void SairModulo(int id)
         {
             var inscricao = _moduloServicos.ObterPorId(id);

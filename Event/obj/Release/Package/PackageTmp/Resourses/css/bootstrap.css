@@ -6,6 +6,14 @@
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /*INPUT TEXT FORMS*/
+.transparencia {
+    background-color: rgba(255,255,255, 0.5);
+    box-shadow: 0 0 10px darkgrey;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 1px;
+    border-bottom: 1px;
+}
 .textos {
     width: 90%;
 }
@@ -17,6 +25,7 @@ html {
 }
 body {
   margin: 0;
+
 }
 article,
 aside,
@@ -282,7 +291,10 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-image: url('../Images/RFID.jpg');
+  background-size: 160px 90px;
+    background-repeat: repeat;
+  
 }
 input,
 button,

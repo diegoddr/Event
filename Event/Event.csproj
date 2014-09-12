@@ -263,6 +263,8 @@
     <Content Include="Resourses\css\bootstrap.min.css" />
     <Content Include="Resourses\css\signin.css" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Resourses\Images\datepicker.gif" />
+    <Content Include="Resourses\Images\RFID.jpg" />
     <Content Include="Resourses\js\bootstrap.js" />
     <Content Include="Resourses\js\bootstrap.min.js" />
     <Content Include="Resourses\js\funcoes.js" />

@@ -5,10 +5,13 @@
     var saida = TempData["SucessoSair"] ?? string.Empty;
 }
 
-<div class="col-md-9">
+<div class="col-md-3 transparencia" >
+    Aqui amigos
+</div>
+<div class="col-md-6 transparencia">
     <h2>Bem vindo @Model.Nome!</h2>
 </div>
-<div class="col-md-3">
+<div class="col-md-3 transparencia">
     <h4>Convites</h4>
     <table class="table">
         <tr>
@@ -23,7 +26,7 @@
                     <button class="btn btn-default col-sm-6 btn-sm glyphicon glyphicon-ok-circle" title="Aceitar" onclick="aceitarConvite(@i.Id)"></button>
                     <button class="btn btn-default col-sm-6 btn-sm glyphicon glyphicon-remove-circle" title="Recusar" onclick="recusarConvite(@i.Id)"></button>
                 </td>
-                
+
             </tr>
         }
     </table>

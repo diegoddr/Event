@@ -3,10 +3,8 @@
     ViewBag.Title = "TodosModulos";
     var usuario = Model.Usuario;
 }
-
-<h2>Lista de Todos os Módulos</h2>
-
-<div id="tablePc" class="container" style="display: none">
+<div id="tablePc" class="container transparencia" style="display: none">
+    <h2>Lista de Todos os Módulos</h2>
     <table class="table">
         <tr>
             <th>Nome</th>
@@ -68,7 +66,9 @@
                 }
                 else
                 {
-                    <td></td>
+                    <td>
+                        <button class="btn btn-default" title="Sair do Módulo" onclick="sairModulo(@i.Id);"><span class="glyphicon glyphicon-log-out"></span></button>
+                    </td>
                 }
             </tr>
         }

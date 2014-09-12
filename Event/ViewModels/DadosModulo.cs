@@ -7,6 +7,7 @@ namespace Event.ViewModels
     {
         public IList<Evento> Eventos { get; set; }
         public IList<Modulo> Modulos { get; set; }
+        public IList<Modulo> ModulosHoje { get; set; }
         public Modulo Modulo { get; set; }
         public IList<Usuario> Usuarios { get; set; }
         public Usuario Usuario { get; set; }

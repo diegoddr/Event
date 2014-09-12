@@ -20,10 +20,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:06:20</publishTime>
     </File>
     <File Include="bin/Dependencia.dll">
-      <publishTime>09/10/2014 10:36:54</publishTime>
+      <publishTime>09/11/2014 17:54:40</publishTime>
     </File>
     <File Include="bin/Dominio.dll">
-      <publishTime>09/10/2014 10:36:54</publishTime>
+      <publishTime>09/11/2014 17:54:40</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.AspNet.dll">
       <publishTime>07/28/2014 08:03:42</publishTime>
@@ -47,7 +47,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:14</publishTime>
     </File>
     <File Include="bin/Event.dll">
-      <publishTime>09/10/2014 10:36:55</publishTime>
+      <publishTime>09/11/2014 17:54:41</publishTime>
     </File>
     <File Include="bin/Iesi.Collections.dll">
       <publishTime>07/28/2014 08:06:08</publishTime>
@@ -65,7 +65,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:06:08</publishTime>
     </File>
     <File Include="bin/Persistencia.dll">
-      <publishTime>09/10/2014 10:36:54</publishTime>
+      <publishTime>09/11/2014 17:54:40</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>07/28/2014 08:03:38</publishTime>
@@ -335,7 +335,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2014 10:21:28</publishTime>
     </File>
     <File Include="Resourses/css/bootstrap.css">
-      <publishTime>09/03/2014 19:55:45</publishTime>
+      <publishTime>09/11/2014 16:38:34</publishTime>
     </File>
     <File Include="Resourses/css/bootstrap.css.map">
       <publishTime>07/31/2014 10:21:28</publishTime>
@@ -361,6 +361,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Resourses/fonts/glyphicons-halflings-regular.woff">
       <publishTime>07/31/2014 10:21:28</publishTime>
     </File>
+    <File Include="Resourses/Images/datepicker.gif">
+      <publishTime>09/11/2014 17:48:06</publishTime>
+    </File>
+    <File Include="Resourses/Images/RFID.jpg">
+      <publishTime>09/11/2014 16:16:45</publishTime>
+    </File>
     <File Include="Resourses/js/bootstrap.js">
       <publishTime>07/31/2014 10:21:28</publishTime>
     </File>
@@ -368,7 +374,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2014 10:21:28</publishTime>
     </File>
     <File Include="Resourses/js/funcoes.js">
-      <publishTime>09/09/2014 10:50:08</publishTime>
+      <publishTime>09/11/2014 17:48:33</publishTime>
     </File>
     <File Include="Resourses/js/jQuery-1.10.2.js">
       <publishTime>07/31/2014 11:54:52</publishTime>
@@ -479,34 +485,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:04</publishTime>
     </File>
     <File Include="Views/Home/IndexCracha.cshtml">
-      <publishTime>09/08/2014 20:39:38</publishTime>
+      <publishTime>09/11/2014 17:43:34</publishTime>
     </File>
     <File Include="Views/Login/Login.cshtml">
       <publishTime>09/02/2014 14:20:06</publishTime>
     </File>
     <File Include="Views/Modulo/AlterarModulo.cshtml">
-      <publishTime>09/05/2014 13:50:11</publishTime>
+      <publishTime>09/11/2014 17:53:36</publishTime>
     </File>
     <File Include="Views/Modulo/CadastrarModulo.cshtml">
-      <publishTime>09/05/2014 13:53:26</publishTime>
+      <publishTime>09/11/2014 17:27:59</publishTime>
     </File>
     <File Include="Views/Modulo/ConvidarUsuario.cshtml">
-      <publishTime>09/02/2014 19:45:18</publishTime>
+      <publishTime>09/11/2014 17:53:58</publishTime>
     </File>
     <File Include="Views/Modulo/ListarMeusModulos.cshtml">
-      <publishTime>09/05/2014 13:55:27</publishTime>
+      <publishTime>09/11/2014 17:54:11</publishTime>
     </File>
     <File Include="Views/Modulo/ListarModulosAntigos.cshtml">
-      <publishTime>09/05/2014 13:55:32</publishTime>
+      <publishTime>09/11/2014 17:54:23</publishTime>
     </File>
     <File Include="Views/Modulo/ListarTodosModulos.cshtml">
-      <publishTime>09/09/2014 10:12:06</publishTime>
+      <publishTime>09/11/2014 17:54:29</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/28/2014 08:03:04</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/03/2014 20:19:27</publishTime>
+      <publishTime>09/11/2014 14:07:32</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>07/28/2014 08:03:04</publishTime>
@@ -530,7 +536,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:04</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/10/2014 10:40:45</publishTime>
+      <publishTime>09/11/2014 17:54:48</publishTime>
     </File>
   </ItemGroup>
 </Project>

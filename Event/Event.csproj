@@ -249,7 +249,9 @@
     <Content Include="Images\datepicker.gif" />
     <Content Include="favicon.ico" />
     <Content Include="Images\RFID.jpg" />
+    <Content Include="Resourses\css\bootstrap-select.css" />
     <Content Include="Resourses\css\bootstrap-theme.css.map" />
+    <Content Include="Resourses\css\bootstrap.css" />
     <Content Include="Resourses\css\bootstrap.css.map" />
     <Content Include="Resourses\css\jQuery-ui.css" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.eot" />
@@ -259,12 +261,12 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Resourses\css\bootstrap-theme.css" />
     <Content Include="Resourses\css\bootstrap-theme.min.css" />
-    <Content Include="Resourses\css\bootstrap.css" />
     <Content Include="Resourses\css\bootstrap.min.css" />
     <Content Include="Resourses\css\signin.css" />
     <Content Include="Resourses\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Resourses\Images\datepicker.gif" />
     <Content Include="Resourses\Images\RFID.jpg" />
+    <Content Include="Resourses\js\bootstrap-select.js" />
     <Content Include="Resourses\js\bootstrap.js" />
     <Content Include="Resourses\js\bootstrap.min.js" />
     <Content Include="Resourses\js\funcoes.js" />

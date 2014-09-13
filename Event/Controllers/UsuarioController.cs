@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Dependencia;
 using Dominio.Entidades;
 using Dominio.Servicos;
+using Event.Models;
 using NHibernate.Criterion;
 using NHibernate.Linq;
 
@@ -14,10 +16,14 @@ namespace Event.Controllers
     {
         //
         // GET: /Usuario/
+        private readonly InscricaoModuloServicos _inscricaoModuloServicos;
+        private readonly ModuloServicos _moduloServicos;
         private readonly UsuarioServicos _usuarioServicos;
         public UsuarioController()
         {
             _usuarioServicos = Dependencias.Resolver<UsuarioServicos>();
+            _moduloServicos = Dependencias.Resolver<ModuloServicos>();
+            _inscricaoModuloServicos = Dependencias.Resolver<InscricaoModuloServicos>();
         }
         [AllowAnonymous]
         public ActionResult Index()
@@ -72,6 +78,22 @@ namespace Event.Controllers
             usuario.Senha = f["Senha"];
             usuario.Telefone = f["Telefone"];
             return RedirectToAction("IndexCracha", "Home");
+        }
+        public JsonResult StatusUsuarioModulo(int id)
+        {
+            var modulo = _moduloServicos.ObterPorId(id);
+            var lista = new List<UsuarioPresente>();
+            foreach (var i in modulo.Usuarios)
+            {
+                var inscricaoModulo = _inscricaoModuloServicos.ObterPorFiltro(e => e.Modulo == modulo && e.Usuario == i);
+                lista.Add(new UsuarioPresente
+                {
+                    Nome = i.Nome,
+                    HoraEntrada = inscricaoModulo.Entrada??"- - : - -",
+                    HoraSaida = inscricaoModulo.Saida ?? "- - : - -"
+                });
+            }
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
     }
 }

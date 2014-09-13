@@ -14,6 +14,15 @@
     border-top: 1px;
     border-bottom: 1px;
 }
+.titulosCentro {
+    background-color: rgba(255,255,255, 0.8);
+    border-left: 2px;
+    border-right: 2px;
+    border-top: 2px;
+    border-bottom: 2px;
+}
+.navbar-custom {	background-color:#4372b8;    color:#ffffff;  	border-radius:0;}  .navbar-custom .navbar-nav > li > a {  	color:#fff;  	padding-left:20px;  	padding-right:20px;}.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {    color: #ffffff;	background-color:transparent;}      .navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {    text-decoration: none;    background-color: #28416a;}      .navbar-custom .navbar-brand {  	color:#eeeeee;}.navbar-custom .navbar-toggle {  	background-color:#eeeeee;}.navbar-custom .icon-bar {  	background-color:#28416a;}
+
 .textos {
     width: 90%;
 }

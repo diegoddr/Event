@@ -76,7 +76,7 @@
             </div>
 
             <br />
-            <div>
+            <div align="center">
                 <div class="btn-group">
                     <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
                     <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
@@ -85,19 +85,14 @@
         </fieldset>
     </form>
 </div>
-
-<div class="col-md-1"></div>
-
+<div class="col-md-1 col-sm-1"></div>
 <div class="container col-md-6 col-sm-6 transparencia" id="tablePc" style="display: none">
-    <legend>Lista dos Meus Módulos</legend>
+    <legend align="center">Lista dos Meus Módulos</legend>
     <table class="table">
         <tr>
             <th>Nome</th>
             <th>Data</th>
-            <th>Início</th>
-            <th>Fim</th>
-            <th>Vagas</th>
-            <th>Evento</th>
+            <th>Horário</th>
             <th></th>
         </tr>
         @foreach (var i in Model.Modulos)
@@ -106,9 +101,6 @@
                 <td>@i.Nome</td>
                 <td>@i.Data.ToShortDateString()</td>
                 <td>@i.Inicio</td>
-                <td>@i.Fim</td>
-                <td>@i.Vagas</td>
-                <td>@i.Evento.Nome</td>
                 @if (i.Evento.Organizador == usuario)
                 {
                     <td class="btn-group">

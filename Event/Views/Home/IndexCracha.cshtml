@@ -5,23 +5,39 @@
     var saida = TempData["SucessoSair"] ?? string.Empty;
 }
 
+<div class="col-md-2 transparencia">
+    <h4>Bem vindo <br/> @Model.Usuario.Nome!</h4>
+</div>
+<div class="col-md-1"></div>
+<div class="col-md-5 transparencia">
+    <div align="center" style="margin-top: 10px; ">
+        <select class="selectpicker show-tick" id="selectModulos" onchange="deletarTabelaUsuarios($(this).val())">
+            <option data-hidden="true">Selecione</option>
+            @foreach (var i in Model.ModulosHoje)
+            {
+                <option value="@i.Id">@i.Nome</option>
+            }
+        </select>
+    </div>
+    <div align="center">
+        <table id="tabelaUsuarios" style="margin-top: 15px; margin-bottom: 20px">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Presença de usuários</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="col-md-1"></div>
 <div class="col-md-3 transparencia">
-    Aqui amigos
-</div>
-<div class="col-md-6 transparencia">
-    <h2>Bem vindo @Model.Usuario.Nome!</h2>
-</div>
-<div class="col-md-2">
-    <select class="selectpicker">
-        @foreach (var i in Model.ModulosHoje)
-        {
-            <option value="@i.Id">@i.Nome</option>
-        }
-    </select>
-</div>
-<div class="col-md-3 transparencia">
-    <h4>Convites</h4>
-    <table class="table">
+    <h4 align="center" style="margin-top: 10px">Convites</h4>
+    <table class="table" style="margin-top: 20px">
         <tr>
             <th>Módulos</th>
             <th></th>
@@ -38,7 +54,6 @@
             </tr>
         }
     </table>
-    @*<input type="button" onclick="fechatudo()" />*@
 </div>
 
 @section scripts

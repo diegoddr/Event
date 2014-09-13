@@ -87,21 +87,5 @@ namespace Event.Controllers
 
         }
 
-        public JsonResult StatusUsuarioModulo(int id)
-        {
-            var modulo = _moduloServicos.ObterPorId(id);
-            var lista = new List<UsuarioPresente>();
-            foreach (var i in modulo.Usuarios)
-            {
-                var inscricaoModulo = _inscricaoModuloServicos.ObterPorFiltro(e => e.Modulo == modulo && e.Usuario == i);
-                lista.Add(new UsuarioPresente
-                {
-                    Nome = i.Nome,
-                    HoraEntrada = inscricaoModulo.Entrada,
-                    HoraSaida = inscricaoModulo.Saida
-                });
-            }
-            return Json(lista, JsonRequestBehavior.AllowGet);
-        }
     }
 }

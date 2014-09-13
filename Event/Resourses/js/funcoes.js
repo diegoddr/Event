@@ -15,6 +15,7 @@ $('.data').mask('00/00/0000');
 $('.time').mask('00:00');
 
 $(".calendario").datepicker({
+
     showOtherMonths: true,
     selectOtherMonths: true,
     dateFormat: 'dd/mm/yy',
@@ -193,10 +194,56 @@ function validarDataModulo(id) {
             } else {
                 document.getElementById("erroDataInicio").innerHTML = "";
             }
-
         }
     });
 }
+
+        $(document).ready(function() {
+            $(".selectpicker").selectpicker({
+            
+                size: 4
+            });
+        });
+
+function preencherTabelaUsuarios(id) {
+    var tabela = document.getElementById("tabelaUsuarios");
+    $.get("/Usuario/StatusUsuarioModulo/"+id, function(data) {
+        $.each(data, function(i, res) {
+            if (res != null) {
+                
+                var linha = tabela.insertRow(1);
+                var usuario = document.createElement("td");
+                var entrada = document.createElement("td");
+                var saida = document.createElement("td");
+                
+                usuario.innerHTML = "<td>" + res.Nome + "</td>";
+                entrada.innerHTML = "<td><button class='btn btn-sm btn-default'>" + res.HoraEntrada + "</button></td>";
+                saida.innerHTML = "<td><button class='btn btn-sm btn-default'>" + res.HoraSaida + "</button></td>";
+
+                linha.appendChild(usuario);
+                linha.appendChild(entrada);
+                linha.appendChild(saida);
+            }
+        });
+    });
+}
+function deletarTabelaUsuarios(id) {
+    
+    var numeroLinhas = $("#tabelaUsuarios >tbody >tr").length;
+    for (var i = 1; i< numeroLinhas; i++) {
+        document.getElementById("tabelaUsuarios").deleteRow(1);
+    }
+    preencherTabelaUsuarios(id);
+}
+
+
+
+
+
+
+
+
+
 
 
 

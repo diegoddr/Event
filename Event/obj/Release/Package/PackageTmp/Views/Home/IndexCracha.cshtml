@@ -1,24 +1,48 @@
-﻿@model Dominio.Entidades.Usuario
+﻿@model Event.ViewModels.DadosModulo
 @{
     ViewBag.Title = "Home/Acesso";
     var entrada = TempData["SucessoEntrar"] ?? string.Empty;
     var saida = TempData["SucessoSair"] ?? string.Empty;
 }
 
-<div class="col-md-3 transparencia" >
-    Aqui amigos
+<div class="col-md-2 transparencia">
+    <h4>Bem vindo <br/> @Model.Usuario.Nome!</h4>
 </div>
-<div class="col-md-6 transparencia">
-    <h2>Bem vindo @Model.Nome!</h2>
+<div class="col-md-1"></div>
+<div class="col-md-5 transparencia">
+    <div align="center" style="margin-top: 10px; ">
+        <select class="selectpicker show-tick" id="selectModulos" onchange="deletarTabelaUsuarios($(this).val())">
+            <option data-hidden="true">Selecione</option>
+            @foreach (var i in Model.ModulosHoje)
+            {
+                <option value="@i.Id">@i.Nome</option>
+            }
+        </select>
+    </div>
+    <div align="center">
+        <table id="tabelaUsuarios" style="margin-top: 15px; margin-bottom: 20px">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Presença de usuários</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </div>
+<div class="col-md-1"></div>
 <div class="col-md-3 transparencia">
-    <h4>Convites</h4>
-    <table class="table">
+    <h4 align="center" style="margin-top: 10px">Convites</h4>
+    <table class="table" style="margin-top: 20px">
         <tr>
             <th>Módulos</th>
             <th></th>
         </tr>
-        @foreach (var i in Model.Modulos)
+        @foreach (var i in Model.Usuario.Modulos)
         {
             <tr>
                 <td>@i.Nome</td>
@@ -30,24 +54,23 @@
             </tr>
         }
     </table>
-    @*<input type="button" onclick="fechatudo()" />*@
 </div>
 
 @section scripts
 {
-<script>
-    var sucessoEntrada = "@entrada";
-    var sucessoSaida = "@saida";
-    if (sucessoEntrada != "") {
-        alert("Entrada realizada com sucesso.");
+    <script>
+        var sucessoEntrada = "@entrada";
+        var sucessoSaida = "@saida";
+        if (sucessoEntrada != "") {
+            alert("Entrada realizada com sucesso.");
 
-    } else if (sucessoSaida != ""){
-        alert("Saida realizada com sucesso.");
+        } else if (sucessoSaida != "") {
+            alert("Saida realizada com sucesso.");
 
-    }
+        }
 
-    function fechatudo() {
-        self.close();
-    }
-</script>
+        function fechatudo() {
+            self.close();
+        }
+    </script>
 }

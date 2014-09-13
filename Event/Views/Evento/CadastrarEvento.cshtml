@@ -3,10 +3,10 @@
     ViewBag.Title = "CadastrarEvento";
 }
 
-<div class="col-md-5 col-sm-5">
+<div class="col-md-5 col-sm-5 transparencia">
     <form class="form-horizontal" method="post">
         <fieldset>
-            <legend>Cadastrar Evento</legend>
+            <legend align="center">Cadastrar Evento</legend>
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <br />
-            <div>
+            <div align="center">
                 <div class="btn-group">
                     <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
                     <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
@@ -46,15 +46,14 @@
         </fieldset>
     </form>
 </div>
-
-<div id="tablePc" class="col-md-7 col-sm-7" style="display: none">
-    <legend>Lista dos Meus Eventos</legend>
+<div class="col-md-1 col-sm-1"></div>
+<div id="tablePc" class="col-md-6 col-sm-6 transparencia" style="display: none">
+    <legend align="center">Lista dos Meus Eventos</legend>
     <table class="table">
         <tr>
             <th>Nome</th>
             <th>Início</th>
             <th>Fim</th>
-            <th>Organizador</th>
             <th></th>
         </tr>
         @foreach (var i in Model)
@@ -63,7 +62,6 @@
                 <td>@i.Nome</td>
                 <td>@i.Inicio.ToShortDateString()</td>
                 <td>@i.Fim.ToShortDateString()</td>
-                <td>@i.Organizador.Nome</td>
                 <td class="btn-group">
                     <button class="btn btn-default col-sm-4" title="Criar Novo Modulo" onclick="location.href='../Modulo/CadastrarModulo/@i.Id'"><span class="glyphicon glyphicon-plus"></span></button>
                     <button class="btn btn-default col-sm-4" title="Alterar Evento" onclick="location.href='../Evento/AlterarEvento/@i.Id'"><span class="glyphicon glyphicon-pencil"></span></button>

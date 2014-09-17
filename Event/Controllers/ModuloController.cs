@@ -183,6 +183,7 @@ namespace Event.Controllers
             usuario.Modulos.Add(inscricao);
             _usuarioServicos.Cadastrar(usuario);
         }
+        
     }
 }
 

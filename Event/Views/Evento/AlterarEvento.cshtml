@@ -10,20 +10,20 @@
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input class="textos" value="@Model.Nome" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                    <input class="textos form-control" value="@Model.Nome" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">Descrição</label>
                 <div>
-                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição">@Model.Descricao</textarea>
+                    <textarea class="textos form-control" id="tdescricao" name="Descricao" placeholder="Digite a descrição">@Model.Descricao</textarea>
                 </div>
             </div>
 
             <div>
                 <label class="control-label">* Início</label>
                 <div>
-                    <input onchange="validarDiferencaData()" value="@Model.Inicio.ToShortDateString()" id="tDataInicio" name="Inicio" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <input onchange="validarDiferencaData()" value="@Model.Inicio.ToShortDateString()" id="tDataInicio" name="Inicio" type="text" placeholder="00/00/0000" class="dataInput data calendario form-control" required="required">
                     <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <div>
                 <label class="control-label">* Fim</label>
                 <div>
-                    <input onchange="validarDiferencaData()" value="@Model.Fim.ToShortDateString()" id="tfim" name="Fim" type="text" placeholder="00/00/0000" class="data calendario" required="required">
+                    <input onchange="validarDiferencaData()" value="@Model.Fim.ToShortDateString()" id="tfim" name="Fim" type="text" placeholder="00/00/0000" class="dataInput data calendario form-control" required="required">
                     <span style="color:red;" id="erroDataFim"></span>
                 </div>
             </div>
@@ -58,7 +58,7 @@
             var dataInformadaFim = new Date(dataFim[2], dataFim[1] - 1, dataFim[0]);
 
             if (dataInformadaFim < dataInformadaInicio) {
-                alert("Corrigir os campos em vermelho");
+                alert("Corrigir os campos em vermelho!");
                 e.preventDefault();
             }
         });

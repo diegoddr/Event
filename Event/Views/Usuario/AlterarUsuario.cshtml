@@ -6,29 +6,29 @@
 <div class="container-fluid col-md-5 transparencia">
     <form class="form-horizontal" method="post">
         <fieldset>
-            <legend>Alterar Perfil</legend>
+            <legend align="center">Alterar Perfil</legend>
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input value="@Model.Nome" class="textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                    <input value="@Model.Nome" class="form-control textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Login</label>
                 <div>
-                    <input value="@Model.Login" class="textos" id="tlogin" name="Login" type="text" placeholder="Usuario" required="required" disabled="disabled">
+                    <input value="@Model.Login" class="form-control textos" id="tlogin" name="Login" type="text" placeholder="Usuario" required="required" disabled="disabled">
                 </div>
             </div>
             <div id="divSenha1" style="display: none">
                 <label class="control-label">* Senha</label>
                 <div>
-                    <input value="@Model.Senha" class="textos" id="tsenha1" name="Senha" type="password" placeholder="Letras e numeros" required="required">
+                    <input value="@Model.Senha" class="form-control textos" id="tsenha1" name="Senha" type="password" placeholder="Letras e numeros" required="required">
                 </div>
             </div>
             <div id="divSenha2" style="display: none">
                 <label class="control-label">* Confirmar Senha</label>
                 <div>
-                    <input value="@Model.Senha" onchange="validarSenha()" class="textos" id="tsenha2" name="Senha2" type="password" placeholder="Letras e numeros">
+                    <input value="@Model.Senha" onchange="validarSenha()" class="form-control textos" id="tsenha2" name="Senha2" type="password" placeholder="Letras e numeros">
                     <span style="color:red;" id="erroSenha"></span>
                 </div>
             </div>
@@ -37,7 +37,7 @@
             <div>
                 <label class="control-label">* Email</label>
                 <div>
-                    <input value="@Model.Email" class="textos" id="temail" name="Email" type="email" placeholder="exemplo@exemplo.com" required="required" disabled="disabled">
+                    <input value="@Model.Email" class="form-control textos" id="temail" name="Email" type="email" placeholder="exemplo@exemplo.com" required="required" disabled="disabled">
                 </div>
             </div>
             <div>
@@ -45,28 +45,28 @@
                 <br />
                 @if (@Model.Sexo.Equals("M"))
                 {
-                    <input type="text" value="Masculino" disabled="disabled">
+                    <input class="form-control dataInput" type="text" value="Masculino" disabled="disabled">
                 }
                 else
                 {
-                    <input type="text" value="Feminino" disabled="disabled">
+                    <input class="form-control dataInput" type="text" value="Feminino" disabled="disabled">
                 }
             </div>
             <div>
                 <label class="control-label">* Telefone</label>
                 <div>
-                    <input value="@Model.Telefone" id="ttelefone" name="Telefone" type="text" class="telefone" placeholder="(99)9 9999-9999" required="required">
+                    <input value="@Model.Telefone" id="ttelefone" name="Telefone" type="text" class="form-control dataInput telefone" placeholder="(99)9 9999-9999" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Nascimento</label>
                 <div>
-                    <input value="@Model.Nascimento" onchange="validarDataMaior()" id="tnascimento" name="Nascimento" type="text" class="data" placeholder="01/01/2014" required="required" disabled="disabled">
+                    <input value="@Model.Nascimento" onchange="validarDataMaior()" id="tnascimento" name="Nascimento" type="text" class="data form-control" placeholder="01/01/2014" required="required" disabled="disabled">
                     <span style="color:red;" id="erroData"></span>
                 </div>
             </div>
             <br />
-            <div>
+            <div align="center" style="margin-bottom: 20px">
                 <div class="btn-group">
                     <button class="btn btn-success" type="submit" id="enviar" onclick="validarCampos()">Enviar</button>
                     <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
@@ -86,7 +86,7 @@
             var senha1 = $('#tsenha1').val();
             var senha2 = $('#tsenha2').val();
             if (senha1 != senha2) {
-                alert("Corrigir os campos em vermelho");
+                alert("Corrigir os campos em vermelho!");
                 e.preventDefault();
             }
         });

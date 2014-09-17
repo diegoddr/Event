@@ -20,10 +20,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:06:20</publishTime>
     </File>
     <File Include="bin/Dependencia.dll">
-      <publishTime>09/13/2014 18:46:37</publishTime>
+      <publishTime>09/17/2014 16:01:35</publishTime>
     </File>
     <File Include="bin/Dominio.dll">
-      <publishTime>09/13/2014 18:46:36</publishTime>
+      <publishTime>09/17/2014 16:01:34</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.AspNet.dll">
       <publishTime>07/28/2014 08:03:42</publishTime>
@@ -47,7 +47,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:14</publishTime>
     </File>
     <File Include="bin/Event.dll">
-      <publishTime>09/13/2014 18:46:37</publishTime>
+      <publishTime>09/17/2014 16:01:36</publishTime>
     </File>
     <File Include="bin/Iesi.Collections.dll">
       <publishTime>07/28/2014 08:06:08</publishTime>
@@ -65,7 +65,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:06:08</publishTime>
     </File>
     <File Include="bin/Persistencia.dll">
-      <publishTime>09/13/2014 18:46:36</publishTime>
+      <publishTime>09/17/2014 16:01:35</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>07/28/2014 08:03:38</publishTime>
@@ -338,7 +338,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2014 10:21:28</publishTime>
     </File>
     <File Include="Resourses/css/bootstrap.css">
-      <publishTime>09/13/2014 17:49:01</publishTime>
+      <publishTime>09/15/2014 10:24:44</publishTime>
     </File>
     <File Include="Resourses/css/bootstrap.css.map">
       <publishTime>07/31/2014 10:21:28</publishTime>
@@ -380,7 +380,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2014 10:21:28</publishTime>
     </File>
     <File Include="Resourses/js/funcoes.js">
-      <publishTime>09/13/2014 18:42:10</publishTime>
+      <publishTime>09/16/2014 20:53:55</publishTime>
     </File>
     <File Include="Resourses/js/jQuery-1.10.2.js">
       <publishTime>07/31/2014 11:54:52</publishTime>
@@ -464,16 +464,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:04</publishTime>
     </File>
     <File Include="Views/Evento/AlterarEvento.cshtml">
-      <publishTime>09/12/2014 11:51:56</publishTime>
+      <publishTime>09/16/2014 21:51:49</publishTime>
     </File>
     <File Include="Views/Evento/CadastrarEvento.cshtml">
-      <publishTime>09/13/2014 18:32:16</publishTime>
+      <publishTime>09/16/2014 21:51:43</publishTime>
     </File>
     <File Include="Views/Evento/ListarEventosAntigos.cshtml">
-      <publishTime>09/12/2014 11:53:17</publishTime>
+      <publishTime>09/15/2014 11:58:36</publishTime>
     </File>
     <File Include="Views/Evento/ListarMeusEventos.cshtml">
-      <publishTime>09/12/2014 11:53:44</publishTime>
+      <publishTime>09/15/2014 11:58:52</publishTime>
     </File>
     <File Include="Views/Evento/ListarTodosEventos.cshtml">
       <publishTime>09/12/2014 11:54:00</publishTime>
@@ -493,26 +493,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/IndexCracha.cshtml">
       <publishTime>09/13/2014 18:20:00</publishTime>
     </File>
+    <File Include="Views/Home/Manifest.cshtml.cshtml">
+      <publishTime>09/16/2014 17:31:45</publishTime>
+    </File>
     <File Include="Views/Login/Login.cshtml">
-      <publishTime>09/02/2014 14:20:06</publishTime>
+      <publishTime>09/16/2014 21:46:42</publishTime>
     </File>
     <File Include="Views/Modulo/AlterarModulo.cshtml">
-      <publishTime>09/13/2014 18:37:03</publishTime>
+      <publishTime>09/16/2014 21:51:26</publishTime>
     </File>
     <File Include="Views/Modulo/CadastrarModulo.cshtml">
-      <publishTime>09/13/2014 18:46:15</publishTime>
+      <publishTime>09/16/2014 21:51:08</publishTime>
     </File>
     <File Include="Views/Modulo/ConvidarUsuario.cshtml">
-      <publishTime>09/13/2014 18:37:59</publishTime>
+      <publishTime>09/15/2014 11:49:03</publishTime>
     </File>
     <File Include="Views/Modulo/ListarMeusModulos.cshtml">
-      <publishTime>09/13/2014 18:38:44</publishTime>
+      <publishTime>09/15/2014 11:55:37</publishTime>
     </File>
     <File Include="Views/Modulo/ListarModulosAntigos.cshtml">
-      <publishTime>09/13/2014 18:39:00</publishTime>
+      <publishTime>09/15/2014 11:55:16</publishTime>
     </File>
     <File Include="Views/Modulo/ListarTodosModulos.cshtml">
-      <publishTime>09/13/2014 18:39:12</publishTime>
+      <publishTime>09/15/2014 11:54:55</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/28/2014 08:03:04</publishTime>
@@ -527,10 +530,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2014 11:29:56</publishTime>
     </File>
     <File Include="Views/Usuario/AlterarUsuario.cshtml">
-      <publishTime>09/13/2014 18:31:11</publishTime>
+      <publishTime>09/16/2014 21:52:18</publishTime>
     </File>
     <File Include="Views/Usuario/CadastrarUsuario.cshtml">
-      <publishTime>09/13/2014 18:41:06</publishTime>
+      <publishTime>09/16/2014 21:52:06</publishTime>
     </File>
     <File Include="Views/Usuario/Index.cshtml">
       <publishTime>07/29/2014 19:35:30</publishTime>
@@ -542,7 +545,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2014 08:03:04</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/13/2014 18:46:44</publishTime>
+      <publishTime>09/17/2014 16:01:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

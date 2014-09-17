@@ -25,7 +25,7 @@
 <body>
     <div class="container">
         <form class="form-signin" role="form" method="POST">
-            <h2 class="form-signin-heading">Acesso Evento</h2>
+            <h2 class="form-signin-heading" align="center">Acesso Evento</h2>
             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Usuario", @autofocus = "true", @id = "login", @required = "true", @title = "Somente caracteres" })
             @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", @placeholder = "Senha", @id = "password", @required = "true", @title = "Somente bolinhas" })
             @*<label class="checkbox">
@@ -34,9 +34,9 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
         </form>
     </div>
-    <div class="container form-signin">
+    <div class="container form-signin" align="center">
         Caso você ainda não seja usuario<br />
-        Clique abaixo e faça seu cadastro<br />
+        clique abaixo e faça seu cadastro.<br />
         Levará só um minutinho!
         <a>@Html.ActionLink("Cadastra-se", "CadastrarUsuario", "Usuario")</a>
     </div>

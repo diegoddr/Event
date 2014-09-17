@@ -11,6 +11,6 @@ namespace Event.Models
         public string Nome { get; set; }
         public string HoraEntrada { get; set; }
         public string HoraSaida { get; set; }
-
+        public int Id { get; set; }
     }
 }

@@ -20,8 +20,8 @@ $(".calendario").datepicker({
     selectOtherMonths: true,
     dateFormat: 'dd/mm/yy',
     buttonImageOnly: true,
-    showOn: "button",
-    buttonImage: "../Images/datepicker.gif",
+    //showOn: "button",
+    //buttonImage: "../Images/datepicker.gif",
     dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
     dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
     dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
@@ -67,7 +67,7 @@ function sairModulo(id) {
         type: "POST",
         url: '../Modulo/SairModulo/',
         data: { id: id },
-        success: function() {
+        success: function () {
             alert("Inscrição cancelada, o módulo se encontra na sua lista de convites.");
             location.reload();
         }
@@ -198,27 +198,50 @@ function validarDataModulo(id) {
     });
 }
 
-        $(document).ready(function() {
-            $(".selectpicker").selectpicker({
-            
-                size: 4
-            });
-        });
+$(document).ready(function () {
+    $(".selectpicker").selectpicker({
 
+        size: 4
+    });
+});
+
+function zerarSaida(id) {
+    $.ajax({
+        type: "POST",
+        url: '../Usuario/zerarSaida/',
+        data: { id: id },
+        success: function () {
+            alert("Saida zerada.");
+            deletarTabelaUsuarios($("#selectModulos").val());
+        }
+    });
+}
+
+function zerarEntrada(id) {
+    $.ajax({
+        type: "POST",
+        url: '../Usuario/zerarEntrada/',
+        data: { id: id },
+        success: function() {
+            alert("Entrada Zerada.");
+            deletarTabelaUsuarios($("#selectModulos").val());
+        }
+    });
+}
 function preencherTabelaUsuarios(id) {
     var tabela = document.getElementById("tabelaUsuarios");
-    $.get("/Usuario/StatusUsuarioModulo/"+id, function(data) {
-        $.each(data, function(i, res) {
+    $.get("/Usuario/StatusUsuarioModulo/" + id, function (data) {
+        $.each(data, function (i, res) {
             if (res != null) {
-                
+
                 var linha = tabela.insertRow(1);
                 var usuario = document.createElement("td");
                 var entrada = document.createElement("td");
                 var saida = document.createElement("td");
-                
+
                 usuario.innerHTML = "<td>" + res.Nome + "</td>";
                 entrada.innerHTML = "<td><button class='btn btn-sm btn-default'>" + res.HoraEntrada + "</button></td>";
-                saida.innerHTML = "<td><button class='btn btn-sm btn-default'>" + res.HoraSaida + "</button></td>";
+                saida.innerHTML = "<td><button class='btn btn-sm btn-default' onclick='zerarSaida(" + res.Id + ")' >" + res.HoraSaida + "</button></td>";
 
                 linha.appendChild(usuario);
                 linha.appendChild(entrada);
@@ -228,9 +251,9 @@ function preencherTabelaUsuarios(id) {
     });
 }
 function deletarTabelaUsuarios(id) {
-    
+
     var numeroLinhas = $("#tabelaUsuarios >tbody >tr").length;
-    for (var i = 1; i< numeroLinhas; i++) {
+    for (var i = 1; i < numeroLinhas; i++) {
         document.getElementById("tabelaUsuarios").deleteRow(1);
     }
     preencherTabelaUsuarios(id);

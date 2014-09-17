@@ -88,12 +88,25 @@ namespace Event.Controllers
                 var inscricaoModulo = _inscricaoModuloServicos.ObterPorFiltro(e => e.Modulo == modulo && e.Usuario == i);
                 lista.Add(new UsuarioPresente
                 {
+                    Id = inscricaoModulo.Id,
                     Nome = i.Nome,
                     HoraEntrada = inscricaoModulo.Entrada??"- - : - -",
                     HoraSaida = inscricaoModulo.Saida ?? "- - : - -"
                 });
             }
             return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+        public void zerarSaida(int id)
+        {
+            var saidaUsuario = _inscricaoModuloServicos.ObterPorId(id);
+            saidaUsuario.Saida = null;
+            _inscricaoModuloServicos.Cadastrar(saidaUsuario);
+        }
+        public void zerarEntrada(int id)
+        {
+            var entradaUsuario = _inscricaoModuloServicos.ObterPorId(id);
+            entradaUsuario.Entrada = null;
+            _inscricaoModuloServicos.Cadastrar(entradaUsuario);
         }
     }
 }

@@ -12,19 +12,19 @@
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input class="textos" value="@Model.Modulo.Nome" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                    <input class="textos form-control" value="@Model.Modulo.Nome" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">Descrição</label>
                 <div>
-                    <textarea class="textos" id="tdescricao" name="Descricao" placeholder="Digite a descrição">@Model.Modulo.Descricao</textarea>
+                    <textarea class="textos form-control selectpicker" id="tdescricao" name="Descricao" placeholder="Digite a descrição">@Model.Modulo.Descricao</textarea>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Evento</label>
                 <div>
-                    <select onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
+                    <select class="form-control" onchange="validarDataModulo($(this).val())" name="Evento" id="evento">
                         @foreach (var i in Model.Eventos)
                         {
                             <option value="@i.Id">@i.Nome</option>
@@ -35,27 +35,27 @@
             <div>
                 <label class="control-label">* Vagas</label>
                 <div>
-                    <input onkeypress="return validarNumero()" value="@Model.Modulo.Vagas" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
+                    <input class="form-control dataInput" onkeypress="return validarNumero()" value="@Model.Modulo.Vagas" id="tvagas" name="Vagas" type="number" placeholder="Maximo de vagas" required="required" min="1">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Data</label>
                 <div>
-                    <input onchange="validarDataModulo($('#evento').val())" value="@Model.Modulo.Data.ToShortDateString()" id="tDataInicio" name="Data" type="text" class="data calendario" placeholder="00/00/0000" required="required">
+                    <input onchange="validarDataModulo($('#evento').val())" value="@Model.Modulo.Data.ToShortDateString()" id="tDataInicio" name="Data" type="text" class="data calendario form-control dataInput" placeholder="00/00/0000" required="required">
                     <span style="color:red;" id="erroDataInicio"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Início</label>
                 <div>
-                    <input onchange="validarDiferencaHora(); validarHoraInicio();" value="@Model.Modulo.Inicio" id="tinicio" name="Inicio" type="text" class="time" placeholder="00:00" required="required">
+                    <input onchange="validarDiferencaHora(); validarHoraInicio();" value="@Model.Modulo.Inicio" id="tinicio" name="Inicio" type="text" class="time form-control dataInput" placeholder="00:00" required="required">
                     <span style="color:red;" id="erroHoraInicio"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Horário de Fim</label>
                 <div>
-                    <input onchange="validarDiferencaHora(); validarHoraFim();" value="@Model.Modulo.Fim" id="tfim" name="Fim" type="text" placeholder="00:00" class="time" required="required">
+                    <input onchange="validarDiferencaHora(); validarHoraFim();" value="@Model.Modulo.Fim" id="tfim" name="Fim" type="text" placeholder="00:00" class="time form-control dataInput" required="required">
                     <span style="color:red;" id="erroHoraFim"></span>
                     <span style="color:red;" id="erroDiferencaHora"></span>
                 </div>
@@ -63,7 +63,7 @@
             <div>
                 <label class="control-label">Observação</label>
                 <div>
-                    <textarea class="textos" id="tobservacao" name="Observacao" placeholder="Existe Observações">@Model.Modulo.Observacao</textarea>
+                    <textarea class="textos form-control" id="tobservacao" name="Observacao" placeholder="Existe Observações">@Model.Modulo.Observacao</textarea>
                 </div>
             </div>
             <br />
@@ -85,7 +85,7 @@
             var erroDiferencaHora = document.getElementById("erroDiferencaHora").innerHTML;
             var erroHoraFim = document.getElementById("erroHoraFim").innerHTML;
             if (erroDataInicio != "" || erroHoraInicio != "" || erroDiferencaHora != "" || erroHoraFim != "") {
-                alert("Preencha os champos em vermelhor");
+                alert("Corrigir os campos em vermelho!");
                 e.preventDefault();
             }
         });

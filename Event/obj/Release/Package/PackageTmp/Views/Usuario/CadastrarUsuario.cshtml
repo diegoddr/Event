@@ -4,39 +4,39 @@
 }
 
 <div class="col-md-3"></div>
-<div class="container-fluid col-md-5">
+<div class="container-fluid col-md-5 transparencia" style="margin-top: 30px">
     <form class="form-horizontal" method="post">
         <fieldset>
             <legend align="center">Seja bem-vindo</legend>
             <div>
                 <label class="control-label">* Nome</label>
                 <div>
-                    <input class="textos" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
+                    <input class="textos form-control" id="tnome" name="Nome" type="text" placeholder="Nome" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Login</label>
                 <div>
-                    <input class="textos" id="tlogin" name="Login" type="text" placeholder="Usuario" required="required">
+                    <input class="textos form-control" id="tlogin" name="Login" type="text" placeholder="Usuario" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Senha</label>
                 <div>
-                    <input class="textos" id="tsenha1" name="Senha" type="password" placeholder="Letras e numeros" required="required">
+                    <input class="textos form-control" id="tsenha1" name="Senha" type="password" placeholder="Letras e numeros" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Confirmar Senha</label>
                 <div>
-                    <input onchange="validarSenha()" class="textos" id="tsenha2" name="Senha2" type="password" placeholder="Letras e numeros">
+                    <input onchange="validarSenha()" class="textos form-control" id="tsenha2" name="Senha2" type="password" placeholder="Letras e numeros">
                     <span style="color:red;" id="erroSenha"></span>
                 </div>
             </div>
             <div>
                 <label class="control-label">* Email</label>
                 <div>
-                    <input class="textos" id="temail" name="Email" type="email" placeholder="exemplo@exemplo.com" required="required">
+                    <input class="textos form-control" id="temail" name="Email" type="email" placeholder="exemplo@exemplo.com" required="required">
                 </div>
             </div>
             <br />
@@ -54,13 +54,13 @@
             <div>
                 <label class="control-label">* Telefone</label>
                 <div>
-                    <input id="ttelefone" name="Telefone" type="text" class="telefone" placeholder="(99)9 9999-9999" required="required">
+                    <input id="ttelefone" name="Telefone" type="text" class="dataInput telefone form-control" placeholder="(99)9 9999-9999" required="required">
                 </div>
             </div>
             <div>
                 <label class="control-label">* Nascimento</label>
                 <div>
-                    <input onchange="validarDataMaior()" id="tnascimento" name="Nascimento" type="text" class="calendario data" placeholder="01/01/2014" required="required">
+                    <input onchange="validarDataMaior()" id="tnascimento" name="Nascimento" type="text" class="dataInput data form-control" placeholder="01/01/2014" required="required">
                     <span style="color:red;" id="erroData"></span>
                 </div>
             </div>
@@ -84,7 +84,7 @@
             var senha1 = $('#tsenha1').val();
             var senha2 = $('#tsenha2').val();
             if (senha1 != senha2 || dataInformada > hoje) {
-                alert("Corrigir os campos em vermelho");
+                alert("Corrigir os campos em vermelho!");
                 e.preventDefault();
             }
         });

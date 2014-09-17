@@ -6,6 +6,10 @@
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /*INPUT TEXT FORMS*/
+
+.dataInput {
+    width: 50% !important;
+}
 .transparencia {
     background-color: rgba(255,255,255, 0.5);
     box-shadow: 0 0 10px darkgrey;

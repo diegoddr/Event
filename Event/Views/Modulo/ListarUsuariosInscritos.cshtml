@@ -1,0 +1,23 @@
+﻿@model IList<Event.Models.UsuarioPresente>
+@{
+    ViewBag.Title = "ListarUsuariosInscritos";
+}
+
+<div id="tablePc" class="container transparencia">
+    <h2 align="center">Lista Usuários Inscritos</h2>
+    <table class="table">
+        <tr>
+            <th>Usuário</th>
+            <th>Entrada</th>
+            <th>Saida</th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.HoraEntrada</td>
+                <td>@i.HoraSaida</td>
+            </tr>
+        }
+    </table>
+</div>

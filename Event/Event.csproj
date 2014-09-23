@@ -344,7 +344,7 @@
     <Content Include="Views\Modulo\ConvidarUsuario.cshtml" />
     <Content Include="Views\Home\IndexCracha.cshtml" />
     <Content Include="Views\Usuario\AlterarUsuario.cshtml" />
-    <Content Include="Views\Home\Close.cshtml" />
+    <Content Include="Views\Modulo\ListarUsuariosInscritos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

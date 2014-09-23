@@ -200,7 +200,6 @@ function validarDataModulo(id) {
 
 $(document).ready(function () {
     $(".selectpicker").selectpicker({
-
         size: 4
     });
 });
@@ -230,7 +229,7 @@ function zerarEntrada(id) {
 }
 function preencherTabelaUsuarios(id) {
     var tabela = document.getElementById("tabelaUsuarios");
-    $.get("/Usuario/StatusUsuarioModulo/" + id, function (data) {
+    $.get("../Usuario/StatusUsuarioModulo/" + id, function (data) {
         $.each(data, function (i, res) {
             if (res != null) {
 

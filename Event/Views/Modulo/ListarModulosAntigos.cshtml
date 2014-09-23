@@ -28,17 +28,19 @@
                 <td>@i.Fim</td>
                 <td>@i.Vagas</td>
                 <td>@i.Evento.Nome</td>
-                @*if (i.Evento.Organizador == usuario)
-                    {
-                        <td><button onclick=" location.href='/Modulo/ConvidarUsuario/@i.Id' ">Convidar</button></td>
-                        <td><button onclick=" location.href='/Modulo/AlterarModulo/@i.Id' ">Alterar</button></td>
-                    }
-                    else
-                    {
-                        <td></td>
-                        <td></td>
-                    }
-                    <td>X</td>*@
+                @if (i.Evento.Organizador == usuario)
+                {
+                    <td class="btn-group">
+                        <button class="btn btn-default col-xs-3" title="Lista de Inscritos" onclick="location.href='../Modulo/ListarUsuariosInscritos/@i.Id'"><span class="glyphicon glyphicon-list"></span></button>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                    
+                    </td>
+
+                }
             </tr>
         }
     </table>

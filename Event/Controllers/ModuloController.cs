@@ -30,7 +30,7 @@ namespace Event.Controllers
         public ActionResult CadastrarModulo(int? id)
         {
             var dados = new DadosModulo();
-            dados.Eventos = _eventoServicos.Listar(e => e.Organizador == _usuario && e.Fim >= DateTime.Now);
+            dados.Eventos = _eventoServicos.Listar(e => e.Organizador == _usuario && e.Fim >= DateTime.Now && e.Ativo.Equals("S"));
             dados.Modulos = _moduloServicos.Listar(e => e.Evento.Organizador == _usuario && e.Data.Date >= DateTime.Now.Date && e.Ativo.Equals("S"));
             dados.Usuario = _usuario;
             dados.IdEvento = id.HasValue ? id.Value : 0;
@@ -65,6 +65,7 @@ namespace Event.Controllers
             dados.Modulos =
                 _moduloServicos.Listar(
                     e => (e.Usuarios.Contains(_usuario) || e.Evento.Organizador == _usuario) && e.Data.Date < DateTime.Now.Date);
+            dados.Usuario = _usuario;
             return View(dados);
         }
         public ActionResult AlterarModulo(int id)
@@ -93,25 +94,27 @@ namespace Event.Controllers
         public ActionResult ConvidarUsuario(int id)
         {
             var listarUsuarios = new DadosModulo();
-            listarUsuarios.Usuarios = _usuarioServicos.Listar(e => true);
+            listarUsuarios.Usuarios = _usuarioServicos.Listar(e => e != _usuario);
             listarUsuarios.Modulo = _moduloServicos.ObterPorId(id);
             return View(listarUsuarios);
         }
-        [HttpPost]
-        public ActionResult ConvidarUsuario(FormCollection f)
+        public JsonResult Convite(int id, int idmodulo)
         {
-            var listarUsuarios = _usuarioServicos.Listar(e => true).OrderBy(e => e.Nome).ToList();
-            var modulo = _moduloServicos.ObterPorId(Convert.ToInt16(f["Modulo"]));
-            foreach (var i in listarUsuarios)
-            {
-                var formUsuario = i.Id + "usu";
-                if (f[formUsuario] == "on")
-                {
-                    i.Modulos.Add(modulo);
-                    _usuarioServicos.Cadastrar(i);
-                }
-            }
-            return RedirectToAction("CadastrarModulo");
+            var modulo = _moduloServicos.ObterPorId(idmodulo);
+            var usuario = _usuarioServicos.ObterPorId(id);
+            usuario.Modulos.Add(modulo);   
+            _usuarioServicos.Cadastrar(usuario);
+            return Json("Sucesso", JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Desconvidar(int id, int idmodulo)
+        {
+            var modulo = _moduloServicos.ObterPorId(idmodulo);
+            var usuario = _usuarioServicos.ObterPorId(id);
+            usuario.Modulos.Remove(modulo);
+            _usuarioServicos.Cadastrar(usuario);
+            modulo.Usuarios.Remove(usuario);
+            _moduloServicos.Cadastrar(modulo);
+            return Json("Sucesso", JsonRequestBehavior.AllowGet);
         }
         public void RecusarConvite(int id)
         {
@@ -202,6 +205,7 @@ namespace Event.Controllers
             }
             return View(lista);
         }
+
     }
 }
 

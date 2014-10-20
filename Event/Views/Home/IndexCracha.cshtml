@@ -12,7 +12,7 @@
 <div class="col-md-5 transparencia">
     <div align="center" style="margin-top: 10px; ">
         <select class="selectpicker show-tick" id="selectModulos" onchange="deletarTabelaUsuarios($(this).val())">
-            <option data-hidden="true">Selecione</option>
+            <option data-hidden="true">Selecione um Módulo</option>
             @foreach (var i in Model.ModulosHoje)
             {
                 <option value="@i.Id">@i.Nome</option>
@@ -21,12 +21,12 @@
     </div>
     <div align="center">
         <table id="tabelaUsuarios" style="margin-top: 15px; margin-bottom: 20px">
-            <tr>
+            <tr style="width: 90px">
                 <th></th>
                 <th></th>
                 <th></th>
             </tr>
-            <tr>
+            <tr style="width: 90px;">
                 <td>Presença de usuários</td>
                 <td></td>
                 <td></td>

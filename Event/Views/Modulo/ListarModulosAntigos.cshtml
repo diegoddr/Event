@@ -31,15 +31,12 @@
                 @if (i.Evento.Organizador == usuario)
                 {
                     <td class="btn-group">
-                        <button class="btn btn-default col-xs-3" title="Lista de Inscritos" onclick="location.href='../Modulo/ListarUsuariosInscritos/@i.Id'"><span class="glyphicon glyphicon-list"></span></button>
+                        <button class="btn btn-default" title="Lista de Inscritos" onclick="location.href='../Modulo/ListarUsuariosInscritos/@i.Id'"><span class="glyphicon glyphicon-list"></span></button>
                     </td>
                 }
                 else
                 {
-                    <td>
-                    
-                    </td>
-
+                    <td><button class="btn btn-default" title="Sair do Módulo" onclick="sairModulo(@i.Id);"><span class="glyphicon glyphicon-log-out"></span></button></td>
                 }
             </tr>
         }

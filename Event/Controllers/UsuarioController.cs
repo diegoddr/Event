@@ -99,15 +99,44 @@ namespace Event.Controllers
         public void zerarSaida(int id)
         {
             var saidaUsuario = _inscricaoModuloServicos.ObterPorId(id);
-            saidaUsuario.Saida = null;
-            _inscricaoModuloServicos.Cadastrar(saidaUsuario);
+            if (saidaUsuario.Saida != null)
+            {
+                saidaUsuario.Saida = null;
+                _inscricaoModuloServicos.Cadastrar(saidaUsuario);
+            }
+            else
+            {
+                saidaUsuario.Saida = DateTime.Now.ToString("T");
+                _inscricaoModuloServicos.Cadastrar(saidaUsuario);
+            }
         }
         public void zerarEntrada(int id)
         {
             var entradaUsuario = _inscricaoModuloServicos.ObterPorId(id);
-            entradaUsuario.Entrada = null;
-            _inscricaoModuloServicos.Cadastrar(entradaUsuario);
+            if (entradaUsuario.Entrada != null)
+            {
+                entradaUsuario.Entrada = null;
+                _inscricaoModuloServicos.Cadastrar(entradaUsuario);
+            }
+            else
+            {
+                entradaUsuario.Entrada = DateTime.Now.ToString("T");
+                _inscricaoModuloServicos.Cadastrar(entradaUsuario);
+            }
         }
+        //public void setarSaida(int id)
+        //{
+        //    var saidaUsuario = _inscricaoModuloServicos.ObterPorId(id);
+        //    saidaUsuario.Saida = DateTime.Now.ToString();
+        //    _inscricaoModuloServicos.Cadastrar(saidaUsuario);
+        //}
+        //public void setarEntrada(int id)
+        //{
+        //    var entradaUsuario = _inscricaoModuloServicos.ObterPorId(id);
+        //    entradaUsuario.Saida = DateTime.Now.ToString();
+        //    _inscricaoModuloServicos.Cadastrar(entradaUsuario);
+        //}
+
     }
 }
 

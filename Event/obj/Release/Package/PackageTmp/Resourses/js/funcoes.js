@@ -29,6 +29,41 @@ $(".calendario").datepicker({
     monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 });
 
+function convidarUsuario(id, modulo, idBotao) {
+    var str = "desconvidarUsuario(" + id + ", " + modulo + ", " + idBotao + ")";
+    $.ajax({
+        type: "POST",
+        url: '../Convite/',
+        data: { id: id, idmodulo: modulo },
+        success: function () {
+            $("#" + idBotao).removeClass("btn-success glyphicon glyphicon-ok").addClass("btn-danger glyphicon glyphicon-remove");
+            $("#" + idBotao).removeAttr("onclick");
+            $("#" + idBotao).on('click', function () {
+                desconvidarUsuario(id, modulo, idBotao);
+            });
+        }, error: function(e, es) {
+            alert(e + es);
+        }
+    });
+}
+function desconvidarUsuario(id, modulo, idBotao) {
+    var str = "convidarUsuario(" + id + ", " + modulo + ", " + idBotao + ")";
+    $.ajax({
+        type: "POST",
+        url: '../Desconvidar/',
+        data: { id: id, idmodulo: modulo },
+        success: function () {
+            $("#" + idBotao).removeClass("btn-danger glyphicon glyphicon-remove").addClass("btn-success glyphicon glyphicon-ok");
+            $("#" + idBotao).removeAttr("onclick");
+            $("#" + idBotao).on('click', function() {
+                convidarUsuario(id, modulo, idBotao);
+            });
+        }, error: function (e, es) {
+            alert(e + es);
+        }
+    });
+}
+
 function recusarConvite(id) {
     $.ajax({
         type: "POST",
@@ -210,7 +245,6 @@ function zerarSaida(id) {
         url: '../Usuario/zerarSaida/',
         data: { id: id },
         success: function () {
-            alert("Saida zerada.");
             deletarTabelaUsuarios($("#selectModulos").val());
         }
     });
@@ -222,7 +256,6 @@ function zerarEntrada(id) {
         url: '../Usuario/zerarEntrada/',
         data: { id: id },
         success: function() {
-            alert("Entrada Zerada.");
             deletarTabelaUsuarios($("#selectModulos").val());
         }
     });
@@ -238,9 +271,9 @@ function preencherTabelaUsuarios(id) {
                 var entrada = document.createElement("td");
                 var saida = document.createElement("td");
 
-                usuario.innerHTML = "<td>" + res.Nome + "</td>";
-                entrada.innerHTML = "<td><button class='btn btn-sm btn-default'>" + res.HoraEntrada + "</button></td>";
-                saida.innerHTML = "<td><button class='btn btn-sm btn-default' onclick='zerarSaida(" + res.Id + ")' >" + res.HoraSaida + "</button></td>";
+                usuario.innerHTML = "<td style='font-size:14px'>" + res.Nome + "</td>";
+                entrada.innerHTML = "<td><button class='btn btn-sm btn-default' style='width: 90px'><b style='font-size:14px'>" + res.HoraEntrada + "</b></button></td>";
+                saida.innerHTML = "<td><button class='btn btn-sm btn-default' style='width: 90px' onclick='zerarSaida(" + res.Id + ")' ><b style='font-size:14px'>" + res.HoraSaida + "<b></button></td>";
 
                 linha.appendChild(usuario);
                 linha.appendChild(entrada);

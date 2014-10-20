@@ -6,7 +6,7 @@
 <div class="container col-md-12 transparencia" id="tablePc" style="display: none">
     <h3 align="center">Convidar Usuarios para Modulo</h3>
     <form class="form-horizontal" method="post">
-        <table class="table">
+        <table class="table tabelaUsuario">
             <tr>
                 <th></th>
                 <th></th>
@@ -14,11 +14,25 @@
                 <th></th>
                 <th></th>
             </tr>
+            <tr>
+                <th></th>
+                <th><input class="form-control" placeholder="Pesquisa de Usuários" type="text" id="inputFiltro" /></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
             @foreach (var i in Model.Usuarios.OrderBy(e => e.Nome))
             {
-                var usu = i.Id + "usu";
+                var idBotao = "btn" + i.Id;
                 <tr>
-                    <td><input type="checkbox" name="@usu"></td>
+                    @if (Model.Modulo.Usuarios.Any(e => e == i) || i.Modulos.Any(e => e.Id == Model.Modulo.Id))
+                    {
+                        <td><button type="button" class="btn btn-danger glyphicon glyphicon-remove" id="@idBotao" onclick="desconvidarUsuario(@i.Id, @Model.Modulo.Id, '@idBotao')"></button></td>
+                    }
+                    else
+                    {
+                        <td><button type="button" class="btn btn-success glyphicon glyphicon-ok" id="@idBotao" onclick="convidarUsuario(@i.Id, @Model.Modulo.Id, '@idBotao')"></button></td>
+                    }
                     <td>@i.Nome</td>
                     <td>@i.Email</td>
                     <td>@i.Sexo</td>
@@ -28,42 +42,34 @@
             }
         </table>
         <br />
-        <div align="center">
-            <div class="btn-group">
-                <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
-                <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
-            </div>
-        </div>
         <input type="text" value="@Model.Modulo.Id" name="Modulo" hidden />
     </form>
 </div>
 
 <div class="container col-md-6 transparencia" id="tableCel" style="display: none">
     <form class="form-horizontal" method="post">
-        <table class="table">
+        <table class="table tabelaUsuario">
             <tr>
+                <th><input class="form-control" placeholder="Pesquisa de Usuários" type="text" id="inputFiltro" /></th>
                 <th></th>
-                <th></th>
-
             </tr>
             @foreach (var i in Model.Usuarios.OrderBy(e => e.Nome))
             {
-                var usu = i.Id + "usu";
                 <tr>
-                    <td><input type="checkbox" name="@usu"></td>
+                    @*@if (Model.Modulo.Usuarios.Any(e => e == i) || i.Modulos.Any(e => e.Id == Model.Modulo.Id))
+                    {
+                        <td><button type="button" class="btn btn-danger glyphicon glyphicon-remove" id="@idBotao" onclick="desconvidarUsuario(@i.Id, @Model.Modulo.Id, '@idBotao')"></button></td>
+                    }
+                    else
+                    {
+                        <td><button type="button" class="btn btn-success glyphicon glyphicon-ok" id="@idBotao" onclick="convidarUsuario(@i.Id, @Model.Modulo.Id, '@idBotao')"></button></td>
+                    }*@
                     <td>@i.Nome</td>
-                    <td>@i.Email</td>
                 </tr>
             }
         </table>
         <br />
-        <div>
-            <div class="btn-group">
-                <button class="btn btn-success" type="submit" id="enviar">Enviar</button>
-                <button class="btn btn-danger" type="reset" id="limpar">Limpar</button>
-            </div>
-        </div>
-        <input type="text" value="@Model.Modulo.Id" name="Modulo" hidden />
+        <input type="text" value="@Model.Modulo.Id" name="Modulo" id="Modulo" hidden />
     </form>
 </div>
 
@@ -80,6 +86,23 @@
             } else {
                 document.getElementById('tablePc').style.display = "block";
             }
+        });
+
+        $(function () {
+            $(".tabelaUsuario input").keyup(function () {
+                var index = $(this).parent().index();
+                var nth = ".tabelaUsuario td:nth-child(" + (index + 1).toString() + ")";
+                var valor = $(this).val().toUpperCase();
+                $(".tabelaUsuario tbody tr").show();
+                $(nth).each(function () {
+                    if ($(this).text().toUpperCase().indexOf(valor) < 0) {
+                        $(this).parent().hide();
+                    }
+                });
+            });
+            $(".tabelaUsuario input").blur(function () {
+                $(this).val("");
+            });
         });
     </script>
 }

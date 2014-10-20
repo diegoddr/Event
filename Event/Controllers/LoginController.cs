@@ -34,7 +34,6 @@ namespace Event.Controllers
                 return View(model);
             }
         }
-
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

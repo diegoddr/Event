@@ -47,7 +47,7 @@ namespace Event.Controllers
                 var modulosDoDia =
                     _moduloServicos.Listar(e => e.Usuarios.Any(x => x.Cracha.ToString() == cracha)
                                                 && e.Data.Date == DateTime.Now.Date);
-                InscricaoModulo moduloDaHora = new InscricaoModulo();
+                InscricaoModulo moduloDaHora = null;
 
                 foreach (var i in modulosDoDia)
                 {
@@ -56,7 +56,7 @@ namespace Event.Controllers
                     if (DateTime.Now.TimeOfDay >= dezMinutos.TimeOfDay &&
                         DateTime.Now.TimeOfDay <= maisDezMinutos.TimeOfDay)
                     {
-                        moduloDaHora =
+                        moduloDaHora=
                             _inscricaoModuloServicos.ObterPorFiltro(
                                 e => e.Usuario.Cracha.ToString() == cracha && e.Modulo == i);
                         break;
@@ -64,16 +64,17 @@ namespace Event.Controllers
                 }
                 if (moduloDaHora != null)
                 {
+                    
                     if (moduloDaHora.Entrada != null)
                     {
-                        moduloDaHora.Saida = DateTime.Now.TimeOfDay.ToString();
+                        moduloDaHora.Saida = DateTime.Now.ToString("T");
                         _inscricaoModuloServicos.Cadastrar(moduloDaHora);
                         TempData["SucessoSair"] = "Horário de saida salvo";
                         return RedirectToAction("Redirecionando");
                     }
                     else
                     {
-                        moduloDaHora.Entrada = DateTime.Now.TimeOfDay.ToString();
+                        moduloDaHora.Entrada = DateTime.Now.ToString("T");
                         _inscricaoModuloServicos.Cadastrar(moduloDaHora);
                         TempData["SucessoEntrar"] = "Horário de entrada salvo";
                         return RedirectToAction("Redirecionando");
